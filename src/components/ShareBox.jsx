@@ -12,23 +12,23 @@ const ShareBox = () => {
           <br /> to your friends!
         </div>
         <div className="info-box__share-box--btns">
-          <button className="info-box__share-box--btn">
+          <button className="info-box__share-box--btn clickable">
             <FontAwesomeIcon icon={faLinkedinIn} />
             Share
           </button>
-          <button className="info-box__share-box--btn">
+          <button className="info-box__share-box--btn clickable">
             <FontAwesomeIcon icon={faXTwitter} />
             Share
           </button>
-          <button className="info-box__share-box--btn">
+          <button className="info-box__share-box--btn clickable">
             <FontAwesomeIcon icon={faMeta} />
             Share
           </button>
-          <button className="info-box__share-box--btn">
+          <button className="info-box__share-box--btn clickable">
             <FontAwesomeIcon icon={faRedditAlien} />
             Share
           </button>
-          <button className="info-box__share-box--btn">
+          <button className="info-box__share-box--btn clickable">
             <FontAwesomeIcon icon={faShare} />
             Link Share
           </button>

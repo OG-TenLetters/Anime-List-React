@@ -10,10 +10,11 @@ import {
   faSearch,
   faArrowRight,
   faShare,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faMeta, faRedditAlien, faXTwitter,  } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare);
+library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

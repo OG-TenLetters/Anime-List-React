@@ -1,8 +1,8 @@
 import { faArrowRight, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import AnimeLogo from "../../../assets/anime-logo.png";
 import AnimeCollage from "../../../assets/Anime Collage.webp";
+import SiteLogo from "../../../components/SiteLogo";
 
 const IntroSearchBox = () => {
   return (
@@ -20,14 +20,8 @@ const IntroSearchBox = () => {
               </figure>
               <div className="intro__search-box--cover"></div>
               <div className="intro__search-box--contents">
-                <div className="intro__search-box--title">
-                  <img
-                    className="intro__search-box--title-logo"
-                    src={AnimeLogo}
-                    alt=""
-                  />{" "}
-                  Anithon
-                </div>
+                <SiteLogo />
+
                 <div className="intro__search-box--search-bar">
                   <input type="text" placeholder="Search at your own risk..." />
                   <button className="clickable intro__search-bar--btn">
