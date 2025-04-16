@@ -4,15 +4,17 @@ import Intro from "./pages/Intro";
 function App() {
   return (
 
-    <Router>
-      <div className="App">
-      <Routes>
-        <Route path="/" element={<Intro/>}>Intro Page</Route>
-        <Route path="/home">Home</Route>
-        <Route path="/info-page">Home</Route>
-      </Routes>
-      </div>
-    </Router>
+
+      <Router>
+        <div className="App">
+        <Routes>
+          <Route path="/" element={<Intro/>}>Intro Page</Route>
+          <Route path="/home">Home</Route>
+          <Route path="/info-page">Home</Route>
+        </Routes>
+        </div>
+      </Router>
+
   );
 }
 
