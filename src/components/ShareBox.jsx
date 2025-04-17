@@ -6,33 +6,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ShareBox = () => {
   return (
     <>
-      <div className="intro__info-box--share-box">
-        <div className="info-box__share-box--title">
-          <span className="primary">Share Anithon</span>
-          <br /> to your friends!
+      <div className="share-box">
+        <div className="share-box__title">
+          <span className="primary">Share Anithon</span> to your friends!
         </div>
-        <div className="info-box__share-box--btns">
-          <button className="info-box__share-box--btn clickable">
+        <div className="share-box__btns">
+          <button className="share-box__btn clickable">
             <FontAwesomeIcon icon={faLinkedinIn} />
             Share
           </button>
-          <button className="info-box__share-box--btn clickable">
+          <button className="share-box__btn clickable">
             <FontAwesomeIcon icon={faXTwitter} />
             Share
           </button>
-          <button className="info-box__share-box--btn clickable">
+          <button className="share-box__btn clickable">
             <FontAwesomeIcon icon={faMeta} />
             Share
           </button>
-          <button className="info-box__share-box--btn clickable">
+          <button className="share-box__btn clickable">
             <FontAwesomeIcon icon={faRedditAlien} />
             Share
           </button>
-          <button className="info-box__share-box--btn clickable">
+          <button className="share-box__btn clickable">
             <FontAwesomeIcon icon={faShare} />
             Link Share
           </button>
         </div>
+        <button className="share-box__more-btn">
+          Share!
+        </button>
       </div>
     </>
   );
