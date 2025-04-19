@@ -11,10 +11,18 @@ import {
   faArrowRight,
   faShare,
   faComment,
+  faSpinner,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faMeta, faRedditAlien, faXTwitter,  } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment);
+library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment, faSpinner, faTimes);
+
+// template_acfbkmf
+// service_dmf4e7a
+//qVGgK80-uMkkItvbU
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

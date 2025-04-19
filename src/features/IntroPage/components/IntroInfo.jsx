@@ -4,7 +4,7 @@ import PostBox from "../../../components/PostBox";
 
 const IntroInfo = () => {
   return (
-    <section id="#Intro-Info">
+    <section id="intro-info">
       <div className="intro__info--container">
         <div className="intro__info--row">
           <div className="intro__info-box--box">

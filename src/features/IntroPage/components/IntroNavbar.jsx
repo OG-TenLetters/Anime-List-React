@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const IntroNavbar = () => {
   return (
-    <nav className="intro__nav">
+    <nav id="intro-nav">
       <ul className="intro__nav--links">
         <li className="intro__nav--link link__hover-effect clickable">
           <Link to="/home">Home</Link>

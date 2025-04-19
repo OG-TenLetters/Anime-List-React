@@ -7,7 +7,7 @@ import SiteLogo from "../../../components/SiteLogo";
 const IntroSearchBox = () => {
   return (
     <>
-      <section id="#landing-page">
+      <section id="landing-page">
         <div className="intro__search-box--container">
           <div className="intro__search-box--row">
             <div className="intro__search-box--box">
