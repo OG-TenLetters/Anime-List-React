@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IntroNavbar from "../features/IntroPage/components/IntroNavbar";
 import IntroSearchBox from "../features/IntroPage/components/IntroSearchBox";
 import Banner from "../components/Banner";
@@ -7,15 +7,17 @@ import Footer from "../layouts/Footer";
 import ContactModal from "../components/ContactModal";
 
 const IntroPage = () => {
+   const [showModal, setShowModal] = useState(false)
+
+
   return (
     <>
-    
-      <Banner page={'intro'}/>
-      <IntroNavbar />
-      <ContactModal />
-      <IntroSearchBox />
-      <IntroInfo />
-      <Footer />
+        <Banner page={'intro'}/>
+        <IntroNavbar setShowModal={() => setShowModal(!showModal)} />
+        {showModal && <ContactModal setShowModal={setShowModal} />}
+        <IntroSearchBox />
+        <IntroInfo />
+        <Footer />
 
     </>
   );

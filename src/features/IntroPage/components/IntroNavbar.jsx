@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const IntroNavbar = () => {
+const IntroNavbar = ({ setShowModal }) => {
+
   return (
     <nav id="intro-nav">
       <ul className="intro__nav--links">
@@ -21,7 +22,10 @@ const IntroNavbar = () => {
         <li className="intro__nav--link link__hover-effect clickable">
           Personal List
         </li>
-        <li className="intro__nav--link link__hover-effect clickable">
+        <li
+        onClick={() => setShowModal(false)}
+          className="intro__nav--link link__hover-effect clickable contact"
+        >
           Contact
         </li>
         <button id="theme__toggle" className="clickable">

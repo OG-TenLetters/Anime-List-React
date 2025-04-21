@@ -11,30 +11,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "@emailjs/browser";
 
-const ContactModal = () => {
+const ContactModal = ({setShowModal}) => {
   const sendEmail = (e) => {
     e.preventDefault();
     const loading = document.querySelector(".contact-modal__overlay--loading");
     const success = document.querySelector(".contact-modal__overlay--success");
     emailjs
-    .sendForm(
+      .sendForm(
         "service_dmf4e7a",
         "template_acfbkmf",
         e.target,
         "qVGgK80-uMkkItvbU"
-      ).then(() => {
+      )
+      .then(() => {
         // throw new Error("error")
         loading.classList.remove("contact-modal__overlay--visible");
         success.classList += " contact-modal__overlay--visible";
-      }).catch(() => {
-        loading.classList.remove("contact-modal__overlay--visible")
-        alert("The emial service is temporarily unavailable. Please email me directly at 1tenletters0@gmail.com")
       })
-      
-      
-      loading.classList += " contact-modal__overlay--visible";
-      setTimeout(() => {
-        console.log("It worked!")
+      .catch(() => {
+        loading.classList.remove("contact-modal__overlay--visible");
+        alert(
+          "The emial service is temporarily unavailable. Please email me directly at 1tenletters0@gmail.com"
+        );
+      });
+
+    loading.classList += " contact-modal__overlay--visible";
+    setTimeout(() => {
+      console.log("It worked!");
     }, 500);
   };
   return (
@@ -49,14 +52,14 @@ const ContactModal = () => {
           </h4>
           <p className="contact-modal__para">
             I'm a 24 year old
-            <b class="primary"> frontend software engineer</b> in Washington
+            <b className="primary"> frontend software engineer</b> in Washington
             State, USA. <br />
             My job is to achieve the best
-            <b class="primary"> user experience</b> whilst keeping the site,
+            <b className="primary"> user experience</b> whilst keeping the site,
             clean, light, and engaging. <br />
             I've tackled problems through different avenues of my life, from
             robotics, art, multi-insurance, to aviation maintenance and I'm
-            excited to <b class="primary"> incorporate </b>
+            excited to <b className="primary"> incorporate </b>
             my skills to website development.
           </p>
           <div className="contact-modal__languages">
@@ -175,6 +178,7 @@ const ContactModal = () => {
           </div>
         </div>
         <FontAwesomeIcon
+        onClick={() => setShowModal(false)}
           className="contact-modal__exit clickable"
           icon={faTimes}
         />
