@@ -8,6 +8,7 @@ import ContactModal from "../components/ContactModal";
 
 const IntroPage = () => {
    const [showModal, setShowModal] = useState(false)
+   
 
 
   return (
@@ -17,7 +18,7 @@ const IntroPage = () => {
         {showModal && <ContactModal setShowModal={setShowModal} />}
         <IntroSearchBox />
         <IntroInfo />
-        <Footer />
+        <Footer setShowModal={() => setShowModal(!showModal)}/>
 
     </>
   );
