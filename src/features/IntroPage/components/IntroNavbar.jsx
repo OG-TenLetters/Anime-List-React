@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const IntroNavbar = ({ toggleTheme, setShowModal }) => {
+const IntroNavbar = ({ toggleTheme, setShowModal, showModal }) => {
 
   return (
-    <nav id="intro-nav">
+    <section id="intro-nav" >
+    <nav className={`intro-nav ${showModal && "hide"}`}>
       <ul className="intro__nav--links">
         <li className="intro__nav--link link__hover-effect clickable">
           <Link to="/home">Home</Link>
@@ -34,6 +35,7 @@ const IntroNavbar = ({ toggleTheme, setShowModal }) => {
         </button>
       </ul>
     </nav>
+    </section>
   );
 };
 

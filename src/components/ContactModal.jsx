@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "@emailjs/browser";
 
-const ContactModal = ({setShowModal}) => {
+const ContactModal = ({showModal, setShowModal}) => {
   const sendEmail = (e) => {
     e.preventDefault();
     const loading = document.querySelector(".contact-modal__overlay--loading");
@@ -42,12 +42,12 @@ const ContactModal = ({setShowModal}) => {
   };
   return (
     <>
-      <div className="contact-modal">
+      <div className={`contact-modal ${showModal && "show"}`}>
         <div className="contact-modal__half contact-modal__about">
-          <h3 className="contact-modal__title mdal__title--about">
+          <h3 className="contact-modal__title contact-modal__title--about">
             This is where I'm currently at:
           </h3>
-          <h4 className="contact-modal__subtitle modal__subtitle--about">
+          <h4 className="contact-modal__subtitle contact-modal__subtitle--about">
             I do what I can, not what I can't... yet.
           </h4>
           <p className="contact-modal__para">

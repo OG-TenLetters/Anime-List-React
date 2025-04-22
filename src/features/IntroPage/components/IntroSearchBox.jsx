@@ -4,11 +4,11 @@ import React from "react";
 import AnimeCollage from "../../../assets/Anime Collage.webp";
 import SiteLogo from "../../../components/SiteLogo";
 
-const IntroSearchBox = () => {
+const IntroSearchBox = ({ showModal }) => {
   return (
     <>
-      <section id="landing-page">
-        <div className="intro__search-box--container">
+      <section id="landing-page" >
+        <div className= {`intro__search-box--container ${showModal && "hide"}`}>
           <div className="intro__search-box--row">
             <div className="intro__search-box--box">
               <figure className="intro__search-box-image--wrapper">

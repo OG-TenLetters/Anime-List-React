@@ -8,6 +8,7 @@ import ContactModal from "../components/ContactModal";
 const IntroPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  
 
   const toggleTheme = () => {
     if (isDark) {
@@ -36,11 +37,12 @@ const IntroPage = () => {
       <IntroNavbar
         toggleTheme={() => toggleTheme()}
         setShowModal={() => setShowModal(!showModal)}
+        showModal={showModal}
       />
-      {showModal && <ContactModal setShowModal={setShowModal} />}
-      <IntroSearchBox />
-      <IntroInfo />
-      <Footer setShowModal={() => setShowModal(!showModal)} />
+      <ContactModal setShowModal={setShowModal} showModal={showModal}/>
+      <IntroSearchBox showModal={showModal} />
+      <IntroInfo showModal={showModal} />
+      <Footer showModal={showModal} setShowModal={() => setShowModal(!showModal)} />
     </>
   );
 };
