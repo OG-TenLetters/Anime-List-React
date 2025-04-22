@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const IntroNavbar = ({ setShowModal }) => {
+const IntroNavbar = ({ toggleTheme, setShowModal }) => {
 
   return (
     <nav id="intro-nav">
@@ -28,7 +28,7 @@ const IntroNavbar = ({ setShowModal }) => {
         >
           Contact
         </li>
-        <button id="theme__toggle" className="clickable">
+        <button onClick={() => toggleTheme()} id="theme__toggle" className="clickable">
           <FontAwesomeIcon className=".moon" icon={faMoon} />
           <FontAwesomeIcon className=".sun" icon={faSun} />
         </button>
