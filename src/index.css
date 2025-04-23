@@ -145,7 +145,6 @@ li {
 }
 /* #endregion */
 /* #region INTRO PAGE */
-
 /* #region INTRO Navbar */
 .intro-nav {
   display: flex;
@@ -494,6 +493,366 @@ li {
 /* #endregion */
 
 /* #endregion */
+/* #region HOME PAGE */
+/* #region HOME Navbar */
+/* #region HOME NavbarMenu */
+.menu__login {
+  display: none;
+}
+
+.btn__menu {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-right: 12px;
+}
+
+.btn__menu:hover {
+  background-color: transparent;
+}
+
+.menu__backdrop {
+  position: fixed ;
+  background-color: #384491cc;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  height: 100vh;
+  border-radius: 0 12px 12px 0;
+  justify-content: center;
+  align-items: start;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
+  transform: translateX(-100%);
+  border: solid 1px #384491cc;
+}
+
+.menu__styling {
+  display: flex;
+  position: fixed;
+  background-color: #89a9e9c2;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0px 0px 32px 24px #8fb0f1c2;
+  top: 3%;
+  bottom: 3%;
+  z-index: 101;
+}
+
+.dark-theme .menu__backdrop {
+  background-color: #15162cf6;
+}
+
+.dark-theme .menu__styling {
+  background-color: #34037494;
+  box-shadow: 0px 0px 32px 24px #34037494;
+}
+
+.dark-theme .menu__link {
+  color: white;
+}
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+.menu--close {
+  transition: right 300ms ease;
+}
+
+.menu--open .menu__backdrop {
+  transform: translateX(0%);
+  right: 80%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.btn__menu--close {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  padding: 8px;
+  color: #000000cc;
+  z-index: 102;
+}
+
+.btn__menu .fa-burger {
+  font-size: 20px;
+}
+
+.btn__menu .fa-times {
+  font-size: 24px;
+}
+
+.dark-theme .btn__menu .fa-burger {
+  color: white;
+}
+.dark-theme .btn__menu .fa-times {
+  color: white;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  /* padding-top: 52px; */
+}
+
+.menu__links {
+  padding: 16px 12px;
+}
+
+.menu__link {
+  color: rgb(0, 0, 0);
+}
+/* #endregion */
+.home__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 24px #1a2042da;
+}
+.home__nav .logo__diamond {
+  height: 24px;
+  width: 24px;
+  margin: 4px;
+  border-radius: 4px;
+}
+.home__nav .anime__title {
+  font-size: 28px;
+  color: white;
+  text-shadow: 0.05em 0.02em black;
+  margin: 0;
+  margin-right: 12px;
+}
+.home__searchbar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+}
+.home__searchbar input {
+  border-radius: 4px;
+  width: 100%;
+  border: none;
+  padding: 8px;
+
+}
+.home__search--btn {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: all 300ms ease;
+}
+.home__search--btn:hover {
+  background-color: #dadada7c;
+}
+.home__search--btns {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-10%, -50%);
+  display: flex;
+  align-items: center;
+}
+.search__filter--btns {
+  /* position: absolute; */
+  margin-left: 4px;
+  padding: 4px;
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px;
+}
+.search__filter--btns:hover:active {
+  /* transform: translate(-50%, -50%); */
+}
+.search__filter--btns .fa-filter {
+  display: none;
+}
+
+.home__social--links {
+  display: flex;
+  column-gap: 4px;
+  margin: 0 12px;
+}
+.home__social--link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 50%;
+  color: white;
+  background-color: gray;
+}
+.home__social--link:nth-child(1) {
+  background-color: #5865f2;
+}
+.home__social--link:nth-child(2) {
+  background-color: #4768b5;
+}
+.home__social--link:nth-child(3) {
+  background-color: black;
+}
+.home__social--link:nth-child(4) {
+  background-color: #f34700;
+}
+.home__language--toggle {
+  min-width: 72px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+
+}
+.home__languages {
+  display: flex;
+  justify-content: center;
+}
+.home__language {
+  padding: 2px 8px;
+  font-size: 8px;
+  color: white;
+
+}
+.home__language:first-child {
+  background-color: gray;
+  border-radius: 4px 0 0 4px;
+}
+.home__language:last-child {
+  border-radius: 0px 4px 4px 0;
+  background-color: purple;
+}
+.home__language--toggle,
+.home__community {
+  font-size: 12px;
+  font-weight: 550;
+}
+.home__community {
+  margin: 0 12px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.home__nav #theme__toggle {
+  font-size: 24px;
+}
+.login {
+  background-color: #ac7ff5;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-left: 20px;
+}
+.login:hover {
+  filter: brightness(1.05);
+}
+.login:hover:active {
+  filter: brightness(.95);
+}
+
+/* #endregion */
+/* #region HOME AnimeTab */
+
+.home__container {
+  padding: 60px 0;
+}
+.home__row {
+  padding: 0 32px;
+}
+.anime-tab {
+  background-color: #4b43e22c;
+  border-radius: 24px;
+  display: flex;
+}
+.anime__contents {
+  width: 70%;
+}
+.anime__top-10 {
+  width: 30%;
+  background-color: #5d6ae262;
+  border-radius: 0 0 24px 24px;
+}
+.anime__top-10--header {
+  background-color: #6073ee86;
+  border-radius: 0 0 24px 24px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.anime__top-10--content {
+  padding: 16px 32px;
+}
+.anime__rank-bar {
+  /* background-color: blue; */
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+}
+.anime__rank {
+  width: 20%;
+}
+.rank__img {
+  width: 100%;
+  object-fit: contain;
+}
+.rank__img--wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: -2px 0px 8px 4px #5d6ae27e;
+
+}
+.rank__img--cover {
+  background-color: #00000085;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.rank__number {
+  position: absolute;
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 300ms ease;
+}
+.rank__title {
+  padding: 8px 12px;
+  background-color: #ac8ae4;
+  box-shadow: 4px 4px 8px 4px #5d6ae27e;
+  width: 80%;
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: all 300ms ease;
+}
+.anime__rank-bar:hover .rank__title {
+  background-color: #8e4bfa;
+}
+.anime__rank-bar:hover .rank__number {
+  color: #f3ff45;
+}
+/* #endregion */
+
+/* #endregion */
+
 /* #region GLOBAL */
 
 /* #region SHARE BOX */

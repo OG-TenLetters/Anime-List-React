@@ -13,10 +13,11 @@ import {
   faComment,
   faSpinner,
   faTimes,
+  faFilter,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faMeta, faRedditAlien, faXTwitter,  } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment, faSpinner, faTimes);
+library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment, faSpinner, faTimes, faBurger, faFilter);
 
 // template_acfbkmf
 // service_dmf4e7a
