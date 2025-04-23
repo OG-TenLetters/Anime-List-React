@@ -3,6 +3,7 @@ import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
 import Main from "../features/HomePage/HomeMain";
 import { useState } from "react";
+import ContactModal from "../components/ContactModal";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,14 +22,17 @@ const HomePage = () => {
     <>
       <Banner page={"main"} />
       <Navbar
-        toggleTheme={() => toggleTheme()}
-        showModal={() => showModal()}
-        setShowModal={() => setShowModal()}
+        toggleTheme={toggleTheme}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
-      <Main />
+      <ContactModal setShowModal={setShowModal}
+        showModal={showModal}
+       />
+      <Main showModal={showModal} />
       <Footer
-        showModal={() => showModal()}
-        setShowModal={() => setShowModal()}
+        showModal={showModal}
+        setShowModal={setShowModal}
       />
     </>
   );

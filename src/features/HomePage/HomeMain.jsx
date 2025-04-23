@@ -2,11 +2,12 @@ import React from "react";
 import AnimeCard from "./components/ui/AnimeCard";
 import AnimeRankBar from "./components/ui/AnimeRankBar";
 
-const Main = () => {
+const Main = ({showModal}) => {
+    
   return (
     <>
       <section id="home-main">
-        <div className="home__container">
+        <div className={`home__container ${showModal && "hide"}`}>
           <div className="home__row">
             <div className="anime-tab">
               <div className="anime__contents">

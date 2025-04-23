@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   faBurger,
@@ -22,38 +22,83 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggleTheme, setShowModal, showModal }) => {
   const navigate = useNavigate();
+  const [showNavMenu, setShowNavMenu] = useState(false);
+  const toggleMenu = () => {
+    const navMenu = document.querySelector(".nav__menu--backdrop");
+    if (showNavMenu) {
+      navMenu.classList.remove("nav__menu--open");
+      setShowNavMenu(false);
+    } else {
+      navMenu.classList.add("nav__menu--open");
+      setShowNavMenu(true);
+    }
+  };
+  const openModalCloseMenu = () => {
+    toggleMenu();
+    setShowModal(true);
+  };
   return (
     <>
+      <div className="nav__menu--backdrop">
+        <button onClick={() => toggleMenu()} className="nav__menu--close">
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+        <div className="nav__menu--bg">
+          <ul className="nav__menu--links">
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Home
+              </li>
+            </div>
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Movies
+              </li>
+            </div>
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Manga
+              </li>
+            </div>
+
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Shows
+              </li>
+            </div>
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Featured
+              </li>
+            </div>
+            <div className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect">
+                Personal List
+              </li>
+            </div>
+            <div className="nav__menu--link-box">
+              <li
+                onClick={() => openModalCloseMenu()}
+                className="nav__menu--link clickable link__hover-effect"
+              >
+                Contact
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
       <section id="home__nav">
-        <nav className="home__nav">
-          <button className="nav__menu--btn nav__menu--open">
+        <nav className={`home__nav ${showModal && "hide"}`}>
+          <button onClick={() => toggleMenu()} className="nav__menu--btn">
             <FontAwesomeIcon icon={faBurger} />
           </button>
-          <div className="nav__menu--backdrop">
-            <div className="nav__menu--bg"></div>
-            <button className="nav__menu--close">
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <ul className="nav__menu--links">
-              <li className="nav__menu--link">
-                hi i'm bob
-              </li>
-              <li className="nav__menu--link">
-                hi i'm bob
-              </li>
-              <li className="nav__menu--link">
-                hi i'm bob
-              </li>
-              <li className="nav__menu--link">
-                hi i'm bob
-              </li>
-              <li className="nav__menu--link">
-                hi i'm bob
-              </li>
-            </ul>
-          </div>
 
-          <div onClick={() =>{ console.log("Site Clicked"); navigate("/")}} >
+          <div
+            onClick={() => {
+              console.log("Site Clicked");
+              navigate("/");
+            }}
+          >
             <SiteLogo />
           </div>
           <div className="home__searchbar">

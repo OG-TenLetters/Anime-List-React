@@ -22,7 +22,7 @@ const IntroPage = () => {
     <>
       <Banner page={"intro"} />
       <IntroNavbar
-        toggleTheme={() => toggleTheme()}
+        toggleTheme={toggleTheme}
         setShowModal={() => setShowModal(!showModal)}
         showModal={showModal}
       />
