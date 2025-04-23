@@ -8,7 +8,6 @@ import ContactModal from "../components/ContactModal";
 const IntroPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  
 
   const toggleTheme = () => {
     if (isDark) {
@@ -19,18 +18,6 @@ const IntroPage = () => {
       setIsDark(true);
     }
   };
-  // const toggleTheme = () => {
-  //   let isDark = false
-  //   if (isDark === false) {
-  //     document.body.classList.add("dark-theme")
-  //     isDark = true
-  //     console.log("hello?")
-  //   } else {
-  //     document.body.classList.remove("dark-theme")
-  //     isDark = false
-  //   }
-  //  }
-
   return (
     <>
       <Banner page={"intro"} />
@@ -39,10 +26,13 @@ const IntroPage = () => {
         setShowModal={() => setShowModal(!showModal)}
         showModal={showModal}
       />
-      <ContactModal setShowModal={setShowModal} showModal={showModal}/>
+      <ContactModal setShowModal={setShowModal} showModal={showModal} />
       <IntroSearchBox showModal={showModal} />
       <IntroInfo showModal={showModal} />
-      <Footer showModal={showModal} setShowModal={() => setShowModal(!showModal)} />
+      <Footer
+        showModal={showModal}
+        setShowModal={() => setShowModal(!showModal)}
+      />
     </>
   );
 };

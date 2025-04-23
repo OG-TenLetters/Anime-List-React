@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   faBurger,
   faComments,
@@ -6,25 +7,55 @@ import {
   faMoon,
   faSearch,
   faSun,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import {
-    faDiscord,
-    faMeta,
-    faRedditAlien,
-    faXTwitter,
+  faDiscord,
+  faMeta,
+  faRedditAlien,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SiteLogo from "../components/SiteLogo";
+import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const HomeNavbar = () => {
+const Navbar = ({ toggleTheme, setShowModal, showModal }) => {
+  const navigate = useNavigate();
   return (
     <>
       <section id="home__nav">
-        <nav class="home__nav">
-          <button class="btn__menu">
+        <nav className="home__nav">
+          <button className="nav__menu--btn nav__menu--open">
             <FontAwesomeIcon icon={faBurger} />
           </button>
-          <SiteLogo />
+          <div className="nav__menu--backdrop">
+            <div className="nav__menu--bg"></div>
+            <button className="nav__menu--close">
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <ul className="nav__menu--links">
+              <li className="nav__menu--link">
+                hi i'm bob
+              </li>
+              <li className="nav__menu--link">
+                hi i'm bob
+              </li>
+              <li className="nav__menu--link">
+                hi i'm bob
+              </li>
+              <li className="nav__menu--link">
+                hi i'm bob
+              </li>
+              <li className="nav__menu--link">
+                hi i'm bob
+              </li>
+            </ul>
+          </div>
+
+          <div onClick={() =>{ console.log("Site Clicked"); navigate("/")}} >
+            <SiteLogo />
+          </div>
           <div className="home__searchbar">
             <input type="text" placeholder="Search..." />
             <div className="home__search--btns">
@@ -62,7 +93,11 @@ const HomeNavbar = () => {
             <FontAwesomeIcon icon={faComments} />
             Community
           </div>
-          <button id="theme__toggle" className="clickable">
+          <button
+            onClick={() => toggleTheme()}
+            id="theme__toggle"
+            className="clickable"
+          >
             <FontAwesomeIcon className=".moon" icon={faMoon} />
             <FontAwesomeIcon className=".sun" icon={faSun} />
           </button>
@@ -73,4 +108,4 @@ const HomeNavbar = () => {
   );
 };
 
-export default HomeNavbar;
+export default Navbar;

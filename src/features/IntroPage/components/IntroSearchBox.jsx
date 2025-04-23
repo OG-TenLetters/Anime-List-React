@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import AnimeCollage from "../../../assets/Anime Collage.webp";
 import SiteLogo from "../../../components/SiteLogo";
+import { Link } from "react-router-dom";
 
 const IntroSearchBox = ({ showModal }) => {
   return (
     <>
-      <section id="landing-page" >
-        <div className= {`intro__search-box--container ${showModal && "hide"}`}>
+      <section id="landing-page">
+        <div className={`intro__search-box--container ${showModal && "hide"}`}>
           <div className="intro__search-box--row">
             <div className="intro__search-box--box">
               <figure className="intro__search-box-image--wrapper">
@@ -36,12 +37,14 @@ const IntroSearchBox = ({ showModal }) => {
                   ducimus? In maiores sint perferendis eveniet quos? Atque,
                   natus.
                 </div>
-                <button className="clickable intro__search-box--btn">
-                  Start Here!{" "}
-                  <div className="arrow--wrapper">
-                    <FontAwesomeIcon icon={faArrowRight} />
-                  </div>
-                </button>
+                <Link to={'/home'}>
+                  <button className="clickable intro__search-box--btn">
+                    Start Here!
+                    <div className="arrow--wrapper">
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    </div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
