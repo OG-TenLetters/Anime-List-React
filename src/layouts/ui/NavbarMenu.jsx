@@ -1,13 +1,26 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
 
-const NavbarMenu = ({setShowModal, toggleMenu}) => {
+const NavbarMenu = ({setShowModal, toggleMenu, showModal}) => {
+  console.log(showModal)
+
+
 
     const openModalCloseMenu = () => {
         toggleMenu();
         setShowModal(true);
       };
+      const scrollLock = () => {
+        if (showModal) {
+          document.body.classList.remove("noscroll");
+        } else {
+          document.body.classList.add("noscroll")
+        }
+      }
+      const completeModalToggle = () => {
+        scrollLock()
+        openModalCloseMenu()    
+      }
   return (
     <>
           <div className="nav__menu--backdrop">
@@ -49,7 +62,7 @@ const NavbarMenu = ({setShowModal, toggleMenu}) => {
             </div>
             <div className="nav__menu--link-box">
               <li
-                onClick={() => openModalCloseMenu()}
+                onClick={() => completeModalToggle()}
                 className="nav__menu--link clickable link__hover-effect"
               >
                 Contact

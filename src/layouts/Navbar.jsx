@@ -23,6 +23,7 @@ import NavbarMenu from "./ui/NavbarMenu";
 const Navbar = ({ toggleTheme, setShowModal, showModal }) => {
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
+
   const toggleMenu = () => {
     const navMenu = document.querySelector(".nav__menu--backdrop");
     if (showNavMenu) {
@@ -36,7 +37,7 @@ const Navbar = ({ toggleTheme, setShowModal, showModal }) => {
 
   return (
     <>
-    <NavbarMenu toggleMenu={toggleMenu}  setShowModal={setShowModal} />
+    <NavbarMenu toggleMenu={toggleMenu} showModal={showModal} setShowModal={setShowModal} />
     
       <section id="home__nav">
         <nav className={`home__nav ${showModal && "hide"}`}>

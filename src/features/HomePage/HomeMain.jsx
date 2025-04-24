@@ -7,6 +7,7 @@ import AnimeRankSkeleton from "../../components/AnimeRankSkeleton";
 import PostBox from "../../components/PostBox";
 
 const Main = ({ showModal }) => {
+
   return (
     <>
       <section id="home-main">

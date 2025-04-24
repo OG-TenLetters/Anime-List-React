@@ -7,7 +7,7 @@ import ContactModal from "../components/ContactModal";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(false);  
 
   const toggleTheme = () => {
     if (isDark) {
