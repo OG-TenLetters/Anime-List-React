@@ -11,8 +11,7 @@
   background-color: rgb(112, 226, 255);
   color: black;
 }
-header {
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -543,7 +542,7 @@ li {
 
 .nav__menu--links {
   padding: 20px 0;
-  
+  transition: all 300ms ease;
 }
 .nav__menu--link {
   margin: 20px 0;
@@ -606,6 +605,7 @@ li {
   border-radius: 4px;
   width: 100%;
   border: none;
+  font-weight: 500;
   padding: 8px;
   transition: all 300ms ease;
 
@@ -735,6 +735,7 @@ li {
   padding-top: 24px;
   padding-bottom: 60px;
   background-color: #4b43e22c;
+  box-shadow: 4px 4px 8px 32px #4b43e22c;
   transition: all 300ms ease;
   opacity: 1;
   visibility: visible;
@@ -763,6 +764,13 @@ li {
 .anime__first-4--content{
   display: flex;
   justify-content: center;
+  transition: all 300ms ease;
+}
+
+.anime__first-4--header,
+.anime__remains--header {
+  margin: 32px 0;
+  transition: all 300ms ease;
 }
 
 .anime__first-4--content .anime-card__skeleton,
@@ -776,6 +784,7 @@ li {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  transition: all 300ms ease;
 }
 
 .anime-card__skeleton,
@@ -916,8 +925,7 @@ li {
 
 /* #region HOME AnimeRank */
 .anime__top-10 {
-  width: 25%;
-  height: 100%;
+  width: 100%;
   background-color: #5d6ae262;
   border-radius: 0 0 16px 16px;
 }
@@ -926,6 +934,7 @@ li {
   border-radius: 0 0 24px 24px;
   text-align: center;
   padding: 12px 0;
+  transition: all 300ms ease;
 }
 
 .anime__top-10--content {
@@ -1033,6 +1042,18 @@ li {
   transition: transform 5s ease 450ms;
 }
 /* #endregion */
+
+.featured {
+  width: 25%;
+  row-gap: 24px;
+}
+.featured .post-box {
+  width: 100%;
+}
+.featured .post-box__post,
+.featured .post-box__btn {
+  background-color: #a0b3ecba;
+}
 
 /* #endregion */
 
@@ -1486,6 +1507,7 @@ li {
   align-items: center;
   overflow: hidden;
   padding: 0;
+
 }
 #theme__toggle .fa-sun {
   display: none;
@@ -1529,8 +1551,19 @@ li {
 .dark-theme .post-box__btn,
 .dark-theme .footer__links,
 .dark-theme .footer__link a,
-.dark-theme .copyright {
+.dark-theme .copyright,
+.dark-theme .home__nav,
+.dark-theme .nav__menu--btn,
+.dark-theme .login,
+.dark-theme .anime__first-4--header,
+.dark-theme .anime__remains--header,
+.dark-theme .anime__top-10--header,
+.dark-theme .rank__title,
+.dark-theme .rank__title--skeleton,
+.dark-theme .nav__menu--close,
+.dark-theme .nav__menu--link {
   color: white;
+
 }
 
 /* #region DT ContactModal */
@@ -1595,6 +1628,8 @@ li {
 /* #endregion */
 /* #region DT IntroPage */
 /* #region DT IntroPage-Nav */
+
+.dark-theme .home__nav,
 .dark-theme .intro-nav {
   background-color: #162791da;
 }
@@ -1613,9 +1648,13 @@ li {
 .dark-theme .intro__search-box--box {
   box-shadow: 0 12px 24px #06060dc9;
 }
+
 .dark-theme .intro__search-box--search-bar input {
   background-color: #c0c0c0;
-  color: rgb(94, 27, 124);
+}
+.dark-theme .home__searchbar input,
+.dark-theme .intro__search-box--search-bar input {
+  color: rgb(54, 40, 14);
 }
 .dark-theme .intro__search-box--search-bar input:focus {
   border: 2px solid rgb(103, 19, 142);
@@ -1660,6 +1699,70 @@ li {
 
 /* #endregion */
 /* #endregion */
+/* #region DT HomePage */
+.dark-theme .anime__top-10--header {
+  background-color: #162791da;
+}
+.dark-theme .rank__img--cover--skeleton {
+  background-image: linear-gradient(90deg, #6843a4 0px, #552e94 50%, #6843a4 100%);
+}
+.dark-theme .rank__title--skeleton {
+  background-image: linear-gradient(90deg, #5335a4 0px, hwb(256 6% 20%) 50%, #5335a4 100%);
+}
+.dark-theme .anime-card__skeleton--title,
+.dark-theme .anime-card__title {
+  background-color: #031274;
+  color: white;
+}
+.dark-theme .anime-card__skeleton--cover {
+  background-image: linear-gradient(90deg, #5335a4 0px, #5225ce 50%, #5335a4 100%);
+}
+.dark-theme .nav__menu--bg {
+  background-color: #34037494;
+  box-shadow: 0px 0px 32px 24px #34037494;
+}
+.dark-theme .nav__menu--backdrop {
+  background-color: #15162cf6;
+}
+.dark-theme .anime__pagination--wrapper {
+  background-color: #6818d1f1;
+  color: white;
+
+}
+.dark-theme .login {
+  background-color: #6818d1f1;
+}
+
+.dark-theme .anime__first-4--content,
+.dark-theme .anime__remains--content {
+  background-color: #29339380;
+    box-shadow: 0px 0px 32px 12px #29339380;
+}
+.dark-theme .home__search--btn {
+  color: black;
+}
+.dark-theme .anime-card__title:hover {
+  background-color: #875af1;
+  color: #fff52f;
+}
+.dark-theme .rank__title {
+  background-color: #6818d1f1;
+}
+.dark-theme .rank__title,
+.dark-theme .rank__img--wrapper {
+  box-shadow: 4px 4px 8px 4px #1f28777e;
+}
+
+.dark-theme .featured .post-box__post,
+.dark-theme .featured .post-box__btn {
+  background-color: #14192968;
+}
+.dark-theme .featured .post-box__btn {
+  box-shadow: 0 4px 8px #01031467;
+}
+
+/* #endregion */
+
 /* #region ANIMATIONS */
 @keyframes sway {
   0% {
