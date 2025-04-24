@@ -1,5 +1,5 @@
 import React from "react";
-import AnimeCover from "../../../../assets/Banner Piece 14.jpg"
+import AnimeCover from "../assets/Banner Piece 14.jpg"
 
 const AnimeRankBar = ({index}) => {
   return (
@@ -12,7 +12,7 @@ const AnimeRankBar = ({index}) => {
             <div className="rank__number">{index + 1}</div>
           </figure>
         </div>
-        <div className="rank__title">Dragon Ball Z</div>
+        <div className="rank__title"><div className="rank__title--text">Dragon Ball Z</div></div>
       </div>
     </>
   );

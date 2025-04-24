@@ -1,5 +1,5 @@
 import React from "react";
-import AnimeCover from "../../../../assets/Banner Piece 16.jpg"
+import AnimeCover from "../assets/Banner Piece 16.jpg"
 
 const AnimeCard = () => {
   
