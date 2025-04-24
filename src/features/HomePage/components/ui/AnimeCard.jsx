@@ -16,7 +16,7 @@ const AnimeCard = () => {
             reprehenderit iusto eius ex, nulla id consequatur ipsum iste!
           </div>
         </figure>
-        <div className="anime-card__title">Dragon Ball</div>
+        <div className="anime-card__title">DragonBall</div>
       </div>
     </>
   );

@@ -689,16 +689,16 @@ li {
 .home__language {
   padding: 2px 8px;
   font-size: 8px;
-  color: white;
-
+  
 }
 .home__language:first-child {
-  background-color: gray;
   border-radius: 4px 0 0 4px;
+  background-color: purple;
+  color: white;
 }
 .home__language:last-child {
   border-radius: 0px 4px 4px 0;
-  background-color: purple;
+  background-color: gray;
 }
 .home__language--toggle,
 .home__community {
@@ -754,6 +754,9 @@ li {
 .anime__contents {
   padding: 20px;
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* #region HOME AnimeCard */
 
@@ -773,20 +776,41 @@ li {
   flex-wrap: wrap;
 }
 
+
+
+.anime-card__skeleton {
+  display: flex;
+  aspect-ratio: 148.57/279.19;
+  flex-direction: column;
+}
+
+
+.anime-card__skeleton,
 .anime-card {
   width: 18%;
   max-width: 200px;
-  margin: 20px 8px;
   border-radius: 20px 20px 8px 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px #00000085;
+  margin: 20px 8px;
 }
+
+
 
 .anime-card__img {
   width: 100%;
   object-fit: contain;
   transform: scale(1.2);
   transition: all 600ms ease;
+}
+
+.anime-card__skeleton--cover {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 50%, #ddd 100%);
+  /* background-size: 200% 100%; */
+  aspect-ratio: 148.94/228.49;
+  animation: pulse 1.5s infinite linear;
 }
 .anime-card__img--wrapper {
   width: 100%;
@@ -837,6 +861,17 @@ li {
   transition: all 600ms ease;
 }
 
+
+
+
+.anime-card__skeleton--title {
+  width: 100%;
+  /* height: 3.7em; */
+  background-color: #b1c0ed;
+  aspect-ratio: 148.94/51.25;
+}
+
+
 .anime-card__title {
   background-color: #b1c0ed;
   width: 100%;
@@ -853,7 +888,33 @@ li {
   text-decoration: underline;
 }
 
+.anime__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
 
+.anime__pagination--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 20px;
+  max-width: 40px;
+  max-height: 40px;
+  overflow: hidden;
+  background-color: rgb(96 115 238 / 86%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.523) ;
+}
+.anime__pagination--wrapper:nth-child(2) {
+  padding: 28px;
+}
 /* #endregion */
 
 /* #region HOME AnimeRank */
