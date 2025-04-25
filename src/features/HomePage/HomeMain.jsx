@@ -6,12 +6,12 @@ import AnimeRankBar from "../../components/AnimeRankBar";
 import AnimeRankSkeleton from "../../components/AnimeRankSkeleton";
 import PostBox from "../../components/PostBox";
 
-const Main = ({ showModal }) => {
+const Main = ({ showContactModal }) => {
 
   return (
     <>
       <section id="home-main">
-        <div className={`home__container ${showModal && "hide"}`}>
+        <div className={`home__container ${showContactModal && "hide"}`}>
           <div className="home__row">
             <div className="anime-tab">
               <div className="anime__contents">

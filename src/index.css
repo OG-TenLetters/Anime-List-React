@@ -105,6 +105,12 @@ li {
 .noscroll {
   overflow: hidden;
 }
+.remove {
+  display: none;
+}
+.add {
+  display: block;
+}
 /* #endregion */
 /* #region BodyStyling */
 .banner__container {
@@ -249,12 +255,14 @@ li {
   transition: all 300ms ease;
 }
 .intro__search-box--search-bar input:focus,
+.home__searchbar2 input:focus,
 .home__searchbar input:focus {
   border: 2px solid #0059ff;
   color: #303030;
 
 }
 .intro__search-box--search-bar::placeholder,
+.home__searchbar2::placeholder,
 .home__searchbar::placeholder {
   font-weight: 400;
 }
@@ -507,16 +515,17 @@ li {
   background-color: transparent;
   box-shadow: none;
   font-size: 24px;
-  padding: 6px 16px;
-  padding-left: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
 }
 .nav__menu--btn:focus {
   animation: spinner 300ms ease;
 }
 
+.menu__btn--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .nav__menu--backdrop {
@@ -567,42 +576,50 @@ li {
 }
 .nav__menu--close {
   position: absolute;
-  top: 15px;
-  left: 19px;
+  top: 14px;
+  left: 15px;
   padding: 8px;
   background-color: transparent;
   box-shadow: none;
   font-size: 24px;
   z-index: 1;
 }
+/* .nav__menu--close:focus .nav__menu--btn {
+  animation: spinner 300ms reverse;
+} */
 /* #endregion */
+
 .home__nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 5;
+  box-shadow: 0 8px 24px #1a2042da;
+  border-radius: 0 0 8px 8px;
+}
+
+.nav__group {
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 8px 24px #1a2042da;
-  z-index: 5;
 }
-.home__nav .logo__diamond {
+.nav__group .logo__diamond {
   height: 24px;
   width: 24px;
   margin: 4px;
   border-radius: 4px;
 }
-.home__nav .anime__title {
+.nav__group .anime__title {
   font-size: 28px;
   color: white;
   text-shadow: 0.05em 0.02em black;
-  margin: 0;
-  margin-right: 12px;
+  margin: 0 12px;
   cursor: pointer;
 }
+.home__searchbar2,
 .home__searchbar {
   position: relative;
   display: flex;
@@ -610,6 +627,10 @@ li {
   max-width: 1000px;
   transition: all 300ms ease;
 }
+.home__searchbar2 {
+  display: none;
+}
+.home__searchbar2 input,
 .home__searchbar input {
   border-radius: 4px;
   width: 100%;
@@ -630,6 +651,7 @@ li {
 .home__search--btn:hover {
   background-color: #dadada7c;
 }
+.home__search--btns2,
 .home__search--btns {
   position: absolute;
   right: 0;
@@ -638,6 +660,7 @@ li {
   display: flex;
   align-items: center;
 }
+.search__filter--btns2,
 .search__filter--btns {
   /* position: absolute; */
   margin-left: 4px;
@@ -650,7 +673,17 @@ li {
 .search__filter--btns:hover:active {
   /* transform: translate(-50%, -50%); */
 }
+.search__filter--btns2 .fa-filter,
 .search__filter--btns .fa-filter {
+  display: none;
+}
+
+.search__btn {
+  padding: 4px 6px;
+  background-color: rgba(128, 112, 216, 0.866);
+  border-radius: 6px;
+  max-width: 88px;
+  margin: 0 8px;
   display: none;
 }
 
@@ -720,7 +753,7 @@ li {
   display: flex;
   flex-direction: column;
 }
-.home__nav #theme__toggle {
+.nav__group .theme__toggle {
   font-size: 24px;
 }
 .login {
@@ -763,7 +796,7 @@ li {
 }
 .anime__contents {
   padding: 20px;
-  width: 75%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -800,7 +833,7 @@ li {
 .anime-card {
   width: 100%;
   height: 100%;
-  max-width: 176px;
+  max-width: 160px;
   border-radius: 20px 20px 8px 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px #00000085;
@@ -1054,7 +1087,7 @@ li {
 /* #endregion */
 
 .featured {
-  width: 25%;
+  width: 30%;
   row-gap: 24px;
 }
 .featured .post-box {
@@ -1507,7 +1540,7 @@ li {
   background-color: greenyellow;
   color: black;
 }
-#theme__toggle {
+.theme__toggle {
   animation: sway 2s infinite ease-in-out;
   font-size: 32px;
   display: flex;
@@ -1518,30 +1551,30 @@ li {
   padding: 0;
 
 }
-#theme__toggle .fa-sun {
+.theme__toggle .fa-sun {
   display: none;
 }
-#theme__toggle .fa-moon,
-#theme__toggle .fa-sun {
+.theme__toggle .fa-moon,
+.theme__toggle .fa-sun {
   padding: 12px;
   transition: all 300ms ease;
 }
-#theme__toggle:hover .fa-moon,
-#theme__toggle:hover .fa-sun {
+.theme__toggle:hover .fa-moon,
+.theme__toggle:hover .fa-sun {
   transform: scale(1.2);
 }
 
-#theme__toggle:active .fa-moon,
-#theme__toggle:active .fa-sun {
+.theme__toggle:active .fa-moon,
+.theme__toggle:active .fa-sun {
   animation: quickSpin 600ms;
 }
-.dark-theme #theme__toggle .fa-sun {
+.dark-theme .theme__toggle .fa-sun {
   display: block;
 }
-.dark-theme #theme__toggle .fa-moon {
+.dark-theme .theme__toggle .fa-moon {
   display: none;
 }
-.dark-theme #theme__toggle {
+.dark-theme .theme__toggle {
   color: white;
 }
 .dark-theme {
@@ -1561,7 +1594,7 @@ li {
 .dark-theme .footer__links,
 .dark-theme .footer__link a,
 .dark-theme .copyright,
-.dark-theme .home__nav,
+.dark-theme .nav__group,
 .dark-theme .nav__menu--btn,
 .dark-theme .login,
 .dark-theme .anime__first-4--header,
@@ -1638,7 +1671,7 @@ li {
 /* #region DT IntroPage */
 /* #region DT IntroPage-Nav */
 
-.dark-theme .home__nav,
+.dark-theme .nav__group,
 .dark-theme .intro-nav {
   background-color: #162791da;
 }
@@ -1661,6 +1694,7 @@ li {
 .dark-theme .intro__search-box--search-bar input {
   background-color: #c0c0c0;
 }
+.dark-theme .home__searchbar2 input,
 .dark-theme .home__searchbar input,
 .dark-theme .intro__search-box--search-bar input {
   color: rgb(54, 40, 14);
@@ -1860,6 +1894,12 @@ li {
   .contact-modal__para {
     font-size: 14px;
   }
+  .anime-card__skeleton--title, .anime-card__title {
+    font-size: 16px;
+  }
+  .post-box__post--stat-2 {
+    padding-right: 0;
+  }
 
   /* #region IntroPage */
   .intro__nav--link:nth-child(4) {
@@ -1897,6 +1937,14 @@ li {
     margin-top: 12px;
   }
   /* #endregion */
+
+  .anime-card__desc {
+    font-size: 14px;
+  }
+
+  .nav__menu--backdrop {
+    right: 70%;
+  }
 }
 @media (max-width: 1024px) {
   /* #region IntroPage */
@@ -1961,6 +2009,31 @@ li {
   .profile__username {
     font-size: 16px;
   }
+  .anime__contents {
+    width: 65%;
+  }
+  .featured {
+    width: 35%;
+  }
+  .anime__remains--content {
+    padding: 0;
+  }
+  .anime-card {
+    width: 20%;
+    border-radius: 12px 12px 6px 6px;
+  }
+  .anime__contents {
+    padding-left: 0;
+  }
+  .anime-card__title {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .anime-card__desc {
+    -webkit-line-clamp: 8;
+    padding: 0 6px;
+  }
 
   /* #endregion */
 }
@@ -1971,17 +2044,74 @@ li {
   .contact-modal__language {
     padding: 16px 8px;
   }
+  .rank__img--wrapper--skeleton,
+  .rank__img--wrapper {
+    border-radius: 12px;
+  }
+  .rank__number--skeleton,
+  .rank__number {
+    font-size: 24px;
+  }
+  .rank__title--skeleton,
+  .rank__title {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+  .featured .post-box__post {
+    padding: 12px 20px;
+  }
+  .featured .post-box__post--stat-2 {
+    font-size: 16px;
+  }
+  .home__social--links {
+    display: none;
+  }
+  .home__searchbar {
+    margin-right: 8px;
+  }
+  .search__filter--word {
+    display: none;
+  }
+  .search__filter--btns .fa-filter {
+    display: block;
+  }
+  .login {
+    display: none;
+  }
+  .theme__toggle .fa-sun,
+  .theme__toggle .fa-moon {
+    padding: 0;
+  }
+  .nav__group .anime__title {
+    font-size: 20px;
+  }
+  .nav__group .logo__diamond {
+    width: 16px;
+    height: 16px;
+  }
+   .anime-card__desc {
+    font-size: 10px;
+   }
+   .nav__menu--backdrop {
+    right: 60%;
+  }
 }
 @media (max-width: 768px) {
 
 
+  .anime__first-4--content .anime-card__desc {
+    -webkit-line-clamp: 10;
+
+  }
+
+  .anime-card__desc {
+    font-size: 14px;
+    -webkit-line-clamp: 6;
+   }
+
   .contact-modal__para {
     font-size: 16px;
   }
-
-  /* .home__body .contact-modal {
-    top: 0;
-  } */
 
   .contact-modal {
     top: 0;
@@ -2082,11 +2212,29 @@ li {
     flex-wrap: wrap;
   }
   /* #endregion */
+  .anime__first-4--header {
+    margin-top: 0;
+  }
+  .anime__contents {
+    width: 60%;
+  }
+  .featured {
+    width: 40%;
+  }
+
+  .anime__first-4--content {
+    flex-wrap: wrap;
+  }
+
+  .anime__first-4--content .anime-card {
+    width: 40%;
+  }
+
+  .anime-card {
+    width: 28%;
+  }
 }
 @media (max-width: 640px) {
-  .menu--open .menu__backdrop {
-    right: 65%;
-  }
 
   /* #region IntroPage */
   .share-box__title {
@@ -2098,6 +2246,31 @@ li {
   }
   .share-box__btns {
     margin: 0;
+  }
+
+  .anime__contents {
+    width: 100%;
+  }
+  .featured {
+    display: none;
+  }
+  .anime__first-4--content {
+    flex-wrap: nowrap;
+  }
+
+
+  .anime__first-4--content .anime-card__desc {
+    -webkit-line-clamp: 6;
+
+  }
+
+  .anime-card__desc {
+    font-size: 14px;
+    -webkit-line-clamp: 8;
+   }
+
+   .nav__menu--backdrop {
+    right: 55%;
   }
   /* #endregion */
 }
@@ -2124,6 +2297,14 @@ li {
     margin: 0;
     margin-bottom: 12px;
   }
+
+  .anime__remains--content
+  .anime-card__desc {
+    display: none;
+  }
+  .nav__menu--backdrop {
+    right: 50%;
+  }
   /* #endregion */
 }
 @media (max-width: 480px) {
@@ -2147,6 +2328,63 @@ li {
     padding: 0 20px;
   }
 
+  .home__searchbar {
+    display: none;
+  }
+
+  .home__searchbar2 {
+    margin: 4px;
+    width: 98%;
+    display: block;
+  }
+
+  .search__btn {
+    display: block;
+    /* display: flex; */
+    width: 100%;
+    justify-content: center;
+  }
+
+  .home__community {
+    margin: 0 12px;
+  }
+
+  .home__nav .anime__title {
+    margin: 0 4px;
+  }
+
+  .home__nav {
+    /* padding-bottom: 20px; */
+  }
+
+  .languages__title,
+  .community__title {
+    display: none;
+  }
+
+  .home__language--toggle {
+    margin: 0;
+  }
+
+  .anime__first-4--content {
+    flex-wrap: wrap;
+  }
+
+  .home__row {
+    padding: 0 12px;
+  }
+  .anime-card {
+    width: 25%;
+  }
+  .nav__menu--backdrop {
+    right: 0;
+  }
+  .nav__menu--link {
+    font-size: 28px;
+  }
+  .nav__menu--close {
+    top: 4px;
+  }
   /* #endregion */
 }
 @media (max-width: 420px) {
@@ -2202,6 +2440,10 @@ li {
   }
   .intro__search-box--search-bar {
     position: relative;
+  }
+
+  .home__nav .anime__title {
+    font-size: 14px;
   }
 
   /* #endregion */

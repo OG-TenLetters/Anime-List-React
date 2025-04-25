@@ -1,29 +1,15 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const NavbarMenu = ({setShowModal, toggleMenu, showModal}) => {
-  console.log(showModal)
+const NavbarMenu = ({ toggleMenu, toggleContactModal }) => {
+  const closeMenuToggleContact = () => {
+    toggleMenu();
+    toggleContactModal()
+  }
 
-
-
-    const openModalCloseMenu = () => {
-        toggleMenu();
-        setShowModal(true);
-      };
-      const scrollLock = () => {
-        if (showModal) {
-          document.body.classList.remove("noscroll");
-        } else {
-          document.body.classList.add("noscroll")
-        }
-      }
-      const completeModalToggle = () => {
-        scrollLock()
-        openModalCloseMenu()    
-      }
   return (
     <>
-          <div className="nav__menu--backdrop">
+      <div className="nav__menu--backdrop">
         <button onClick={() => toggleMenu()} className="nav__menu--close">
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -62,7 +48,7 @@ const NavbarMenu = ({setShowModal, toggleMenu, showModal}) => {
             </div>
             <div className="nav__menu--link-box">
               <li
-                onClick={() => completeModalToggle()}
+                onClick={() => closeMenuToggleContact()}
                 className="nav__menu--link clickable link__hover-effect"
               >
                 Contact
@@ -72,7 +58,7 @@ const NavbarMenu = ({setShowModal, toggleMenu, showModal}) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default NavbarMenu
+export default NavbarMenu;

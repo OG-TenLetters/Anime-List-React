@@ -2,10 +2,10 @@ import React from "react";
 import ShareBox from "../../../components/ShareBox";
 import PostBox from "../../../components/PostBox";
 
-const IntroInfo = ({showModal}) => {
+const IntroInfo = ({showContactModal}) => {
   return (
     <section id="intro-info" >
-      <div className={`intro__info--container ${showModal && "hide"}`}>
+      <div className={`intro__info--container ${showContactModal && "hide"}`}>
         <div className="intro__info--row">
           <div className="intro__info-box--box">
             <ShareBox />

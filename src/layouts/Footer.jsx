@@ -2,23 +2,12 @@ import React from "react";
 import SiteLogo from "../components/SiteLogo";
 import { Link } from "react-router-dom";
 
-const Footer = ({ setShowModal, showModal }) => {
+const Footer = ({ toggleContactModal }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  };
-  scrollToTop();
-  const showModalScroll = () => {
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-    scrollToTop();
-    setShowModal(true);
   };
   return (
     <>
@@ -27,15 +16,9 @@ const Footer = ({ setShowModal, showModal }) => {
           <div className="footer__container">
             <div className="footer__row">
               <div className="footer__content">
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToTop();
-                  }}
-                >
-                  <SiteLogo />
-                </a>
+                  <div onClick={() => scrollToTop()}>
+                    <SiteLogo />
+                  </div>
                 <ul className="footer__links">
                   <li className="footer__link footer-link__hover-effect">
                     <Link
@@ -51,7 +34,7 @@ const Footer = ({ setShowModal, showModal }) => {
                     Terms of Service
                   </li>
                   <li
-                    onClick={() => showModalScroll()}
+                    onClick={() => toggleContactModal()}
                     className="footer__link footer-link__hover-effect clickable"
                   >
                     Contact

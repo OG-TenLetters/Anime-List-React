@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const IntroNavbar = ({ toggleTheme, setShowModal, showModal }) => {
+                
+const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
 
   return (
     <section id="intro-nav" >
-    <nav className={`intro-nav ${showModal && "hide"}`}>
+    <nav className={`intro-nav ${showContactModal && "hide"}`}>
       <ul className="intro__nav--links">
         <li className="intro__nav--link link__hover-effect clickable">
           <Link to="/home">Home</Link>
@@ -24,12 +25,12 @@ const IntroNavbar = ({ toggleTheme, setShowModal, showModal }) => {
           Personal List
         </li>
         <li
-        onClick={() => setShowModal(false)}
+        onClick={() => toggleContactModal(!showContactModal)}
           className="intro__nav--link link__hover-effect clickable contact"
         >
           Contact
         </li>
-        <button onClick={() => toggleTheme()} id="theme__toggle" className="clickable">
+        <button onClick={() => toggleTheme()} className="theme__toggle clickable">
           <FontAwesomeIcon className=".moon" icon={faMoon} />
           <FontAwesomeIcon className=".sun" icon={faSun} />
         </button>

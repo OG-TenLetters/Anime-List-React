@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "@emailjs/browser";
 
-const ContactModal = ({showModal, setShowModal}) => {
+const ContactModal = ({ showContactModal, toggleContactModal }) => {
   const sendEmail = (e) => {
     e.preventDefault();
     const loading = document.querySelector(".contact-modal__overlay--loading");
@@ -40,9 +40,10 @@ const ContactModal = ({showModal, setShowModal}) => {
       console.log("It worked!");
     }, 500);
   };
+
   return (
     <>
-      <div className={`contact-modal ${showModal && "show"}`}>
+      <div className={`contact-modal ${showContactModal && "show"}`}>
         <div className="contact-modal__half contact-modal__about">
           <h3 className="contact-modal__title contact-modal__title--about">
             This is where I'm currently at:
@@ -178,7 +179,7 @@ const ContactModal = ({showModal, setShowModal}) => {
           </div>
         </div>
         <FontAwesomeIcon
-        onClick={() => setShowModal(false)}
+          onClick={() => toggleContactModal(!showContactModal)}
           className="contact-modal__exit clickable"
           icon={faTimes}
         />
