@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./subcomponent/Post";
+import Post from "./Post";
 
 const PostBox = () => {
   return (

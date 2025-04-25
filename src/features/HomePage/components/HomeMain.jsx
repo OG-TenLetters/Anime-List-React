@@ -1,10 +1,11 @@
 import React from "react";
 
-import AnimeCardSkeleton from "../../components/AnimeCardSkeleton";
-import AnimeCard from "../../components/AnimeCard";
-import AnimeRankBar from "../../components/AnimeRankBar";
-import AnimeRankSkeleton from "../../components/AnimeRankSkeleton";
-import PostBox from "../../components/PostBox";
+import AnimeCardSkeleton from "../../../components/AnimeCardSkeleton";
+import AnimeCard from "../../../components/AnimeCard";
+import AnimeRankBar from "../../../components/AnimeRankBar";
+import AnimeRankSkeleton from "../../../components/AnimeRankSkeleton";
+import PostBox from "../../../components/PostBox";
+import { Link } from "react-router-dom";
 
 const Main = ({ showContactModal }) => {
 
@@ -38,15 +39,15 @@ const Main = ({ showContactModal }) => {
                   </div>
                 </div>
                 <div className="anime__pagination">
-                  <div className="anime__pagination--wrapper anime__prev-page clickable">
+                  <button className="anime__pagination--wrapper anime__prev-page clickable">
                     0
-                  </div>
-                  <div className="anime__pagination--wrapper anime__current-page clickable">
+                  </button>
+                  <button className="anime__pagination--wrapper anime__current-page clickable">
                     1
-                  </div>
-                  <div className="anime__pagination--wrapper anime__next-page clickable">
+                  </button>
+                  <button className="anime__pagination--wrapper anime__next-page clickable">
                     2
-                  </div>
+                  </button>
                 </div>
               </div>
               <div className="featured">

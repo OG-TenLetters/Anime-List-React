@@ -14,10 +14,12 @@ import {
   faSpinner,
   faTimes,
   faFilter,
+  faPlus,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faMeta, faRedditAlien, faXTwitter,  } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment, faSpinner, faTimes, faBurger, faFilter);
+library.add(faBurger, faMoon, faSearch, faArrowRight, faLinkedinIn, faXTwitter, faMeta, faRedditAlien, faShare, faComment, faSpinner, faTimes, faBurger, faFilter, faPlus, faArrowLeft);
 
 // template_acfbkmf
 // service_dmf4e7a

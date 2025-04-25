@@ -3,8 +3,9 @@ import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
 import Main from "../features/HomePage/components/HomeMain";
 import ContactModal from "../components/ContactModal";
+import InfoMain from "../features/InfoPage/components/InfoMain";
 
-const HomePage = ({
+const InfoPage = ({
   toggleTheme,
   showContactModal,
   toggleContactModal,
@@ -21,10 +22,10 @@ const HomePage = ({
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
       />
-      <Main showContactModal={showContactModal} />
+      <InfoMain />
       <Footer toggleContactModal={toggleContactModal} />
     </>
   );
 };
 
-export default HomePage;
+export default InfoPage;

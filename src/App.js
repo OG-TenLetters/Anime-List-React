@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import IntroPage from "./pages/IntroPage";
 import HomePage from "./pages/HomePage";
+import InfoPage from "./pages/InfoPage";
 
 function App() {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -22,10 +23,10 @@ function App() {
     } else {
       document.body.classList.add("noscroll");
       setShowContactModal(true);
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
   return (
@@ -52,11 +53,20 @@ function App() {
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}
                 toggleContactModal={toggleContactModal}
-
               />
             }
           ></Route>
-          <Route path="/info-page">Home</Route>
+          <Route
+            path="/home/info/:id"
+            element={
+              <InfoPage
+                setShowContactModal={setShowContactModal}
+                showContactModal={showContactModal}
+                toggleTheme={toggleTheme}
+                toggleContactModal={toggleContactModal}
+              />
+            }
+          ></Route>
         </Routes>
       </div>
     </Router>

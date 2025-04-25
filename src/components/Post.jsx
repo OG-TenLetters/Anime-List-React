@@ -1,7 +1,7 @@
 import React from 'react'
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ProfileImg from "../../assets/Anime-Profile-Example.webp";
+import ProfileImg from "../assets/Anime-Profile-Example.webp";
 
 
 const Post = () => {
