@@ -18,18 +18,24 @@ const InfoMain = ({ showContactModal }) => {
       <section id="home-main">
         <div className={`home__container ${showContactModal && "hide"}`}>
           <div className="home__row">
-            <div className="anime-tab">
+            <div className="anime-tab anime-info-tab">
               <div className="anime__contents">
                   <div>
                 <div className="template__content">
                     <img className="template__cover-bg" src={TemplateImg} alt="" />
                       <button onClick={() => navigate(-1)} className="back__btn">
-                        <FontAwesomeIcon icon={faArrowLeft} /> Go Back
+                        <FontAwesomeIcon icon={faArrowLeft} /> Back
                       </button>
                       <figure className="template__img--wrapper">
+                      <div className="template__g-rating">
+                        18+
+                      </div>
                         <img src={TemplateImg} alt="" className="template__img" />
                       </figure>
-                        <h2 className="template__title">Dragon Ball</h2>
+                        <div className="template__title">
+                          <h2 className="template__title-text">Dragon Ball</h2>
+                          <div className="template__glass"></div>
+                        </div>
                         <button className="add-to-list--btn">
                           <FontAwesomeIcon icon={faPlus} />
                           Add To List

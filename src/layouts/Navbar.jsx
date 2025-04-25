@@ -45,6 +45,7 @@ const Navbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
       <section id="home__nav">
         <nav className={`home__nav ${showContactModal && "hide"}`}>
           <div className="nav__group">
+            {/* <div className="home__nav--glass">Hellooufoiuiou</div> */}
             <button onClick={() => toggleMenu()} className="nav__menu--btn">
               <div className="menu__btn--container">
                 <FontAwesomeIcon icon={faBurger} />
