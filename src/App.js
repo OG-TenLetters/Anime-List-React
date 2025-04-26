@@ -39,13 +39,11 @@ function App() {
     const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}`);
     const animesData = data.data;
     setAnimes(animesData);
-    console.log(animesData)
   }
   async function renderRanks() {
     const { data } = await axios.get(`https://api.jikan.moe/v4/top/anime`);
     const ranksData = data.data;
     setRanks(ranksData);
-    console.log(ranksData)
   }
 
   useEffect(() => {

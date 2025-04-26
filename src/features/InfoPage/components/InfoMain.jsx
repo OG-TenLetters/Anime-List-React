@@ -14,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 const InfoMain = ({ animes, ranks, showContactModal }) => {
   const navigate = useNavigate();
 
-  
+  console.log(animes);
+
   return (
     <>
       <section id="home-main">
@@ -22,31 +23,45 @@ const InfoMain = ({ animes, ranks, showContactModal }) => {
           <div className="home__row">
             <div className="anime-tab anime-info-tab">
               <div className="anime__contents">
-                <div>
-                  <div className="template__content">
-                    <img
-                      className="template__cover-bg"
-                      src={TemplateImg}
-                      alt=""
-                    />
-                    <button onClick={() => navigate(-1)} className="back__btn">
-                      <FontAwesomeIcon icon={faArrowLeft} /> Back
-                    </button>
-                    <figure className="template__img--wrapper">
-                      <div className="template__g-rating">18+</div>
-                      <img src={TemplateImg} alt="" className="template__img" />
-                    </figure>
-                    <div className="template__title">
-                      <h2 className="template__title-text">Dragon Ball</h2>
-                      <div className="template__glass"></div>
-                    </div>
-                    <button className="add-to-list--btn">
-                      <FontAwesomeIcon icon={faPlus} />
-                      Add To List
-                    </button>
-                    <div className="template__details">
-                      <div className="template__summary">
-                        SON-Goku is a young boy who lives in the woods all
+                {animes.length > 0 ? (
+                  animes
+                    .map((anime, index) => (
+                      <div>
+                        <div className="template__content">
+                          <img
+                            className="template__cover-bg"
+                            src={anime?.images.webp.large_image_url}
+                            alt=""
+                          />
+                          <button
+                            onClick={() => navigate(-1)}
+                            className="back__btn"
+                          >
+                            <FontAwesomeIcon icon={faArrowLeft} /> Back
+                          </button>
+                          <figure className="template__img--wrapper">
+                            <div className="template__g-rating">18+</div>
+                            <img
+                              src={anime?.images.webp.image_url}
+                              alt=""
+                              className="template__img"
+                            />
+                          </figure>
+                          <div className="template__title">
+                            <h2 className="template__title-text">
+                              {anime?.title_english ||
+                                anime?.title ||
+                                anime?.title_japan}
+                            </h2>
+                            <div className="template__glass"></div>
+                          </div>
+                          <button className="add-to-list--btn">
+                            <FontAwesomeIcon icon={faPlus} />
+                            Add To List
+                          </button>
+                          <div className="template__details">
+                            <div className="template__summary">
+                              {/* SON-Goku is a young boy who lives in the woods all
                         alone—that is, until a girl named Bulma runs into him in
                         her search for a set of magical objects called the
                         "Dragon Balls." Since the artifacts are said to grant
@@ -67,64 +82,62 @@ const InfoMain = ({ animes, ranks, showContactModal }) => {
                         boyfriend. To stop those who would try to abuse the
                         legendary power, they train to become stronger fighters,
                         using their newfound strength to help the people around
-                        them along the way. [Written by MAL Rewrite]
+                        them along the way. [Written by MAL Rewrite] */}
+                              {anime?.synopsis}
+                            </div>
+                            <div className="template__self-promo">
+                              Anithon is the best site to keep track of all of
+                              your favorite anime! Or manga, shows, and movies!
+                              Whatever you decide, it will be here.
+                            </div>
+                            <div className="template__share">
+                              <ShareBox />
+                            </div>
+                            <div className="template__extra">
+                              <p>
+                                <b>Japanese:</b> {anime?.title_japan}
+                              </p>
+                              <p>
+                                <b>Synonyms:</b> {anime?.title_synonyms}
+                              </p>
+                              <p>
+                                <b>Aired:</b> {anime?.aired}
+                              </p>
+                              <p>
+                                <b>Premiered:</b>
+                              </p>
+                              <p>
+                                <b>Duration:</b> {anime?.duration}
+                              </p>
+                              <p>
+                                <b>Status:</b> {anime?.status}
+                              </p>
+                              <p>
+                                <b>MAL Score:</b> {anime?.score}
+                              </p>
+                              <p>
+                                {/* <b>Genres:</b> {anime?.genres.map()} */}
+                              </p>
+                              <p>
+                                <b>Studios:</b> {anime?.studios.name}
+                              </p>
+                              <p>
+                                <b>Producers:</b> {anime?.licensors.name}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="template__self-promo">
-                        Anithon is the best site to keep track of all of your
-                        favorite anime! Or manga, shows, and movies! Whatever
-                        you decide, it will be here.
-                      </div>
-                      <div className="template__share">
-                        <ShareBox />
-                      </div>
-                      <div className="template__extra">
-                        <p>
-                          <b>Japanese:</b> ドラゴンボール{" "}
-                        </p>
-                        <p>
-                          <b>Synonyms:</b> Dragonball, DB{" "}
-                        </p>
-                        <p>
-                          <b>Aired:</b> Feb 26, 1986 to Apr 12, 1989{" "}
-                        </p>
-                        <p>
-                          <b>Premiered:</b> Winter 1986
-                        </p>
-                        <p>
-                          <b>Duration:</b> 24m{" "}
-                        </p>
-                        <p>
-                          <b>Status:</b> Finished Airing{" "}
-                        </p>
-                        <p>
-                          <b>MAL Score:</b> 8.02
-                        </p>
-                        <p>
-                          <b>Genres:</b> Adventure Comedy Fantasy Martial Arts
-                          Shounen Super Power{" "}
-                        </p>
-                        <p>
-                          <b>Studios:</b> Toei Animation{" "}
-                        </p>
-                        <p>
-                          <b>Producers:</b> Fuji TV, Toei Animation, Funimation
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    ))
+                    .slice(0, 2)
+                ) : (
+                  <div>What's going on</div>
+                )}
                 <div className="anime__recommendations--content">
                   <h2 className="anime__recommendations--header">
                     Recommended for you
                   </h2>
                   <div className="anime__remains--content">
-                    <AnimeCard />
-                    <AnimeCard />
-                    <AnimeCard />
-                    <AnimeCard />
-                    <AnimeCard />
-                    <AnimeCard />
-                    <AnimeCard />
                     <AnimeCard />
                   </div>
                 </div>
