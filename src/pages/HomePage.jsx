@@ -8,6 +8,9 @@ const HomePage = ({
   toggleTheme,
   showContactModal,
   toggleContactModal,
+  animes,
+  ranks,
+  setCurrentPage,
 }) => {
   return (
     <>
@@ -21,7 +24,12 @@ const HomePage = ({
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
       />
-      <Main showContactModal={showContactModal} />
+      <Main
+        showContactModal={showContactModal}
+        animes={animes}
+        ranks={ranks}
+        setCurrentPage={setCurrentPage}
+      />
       <Footer toggleContactModal={toggleContactModal} />
     </>
   );

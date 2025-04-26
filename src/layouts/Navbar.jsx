@@ -53,7 +53,6 @@ const Navbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
             </button>
             <div
               onClick={() => {
-                console.log("Site Clicked");
                 navigate("/");
               }}
             >

@@ -1,14 +1,16 @@
-import React from "react";
-
 import AnimeCardSkeleton from "../../../components/AnimeCardSkeleton";
 import AnimeCard from "../../../components/AnimeCard";
 import AnimeRankBar from "../../../components/AnimeRankBar";
 import AnimeRankSkeleton from "../../../components/AnimeRankSkeleton";
 import PostBox from "../../../components/PostBox";
-import { Link } from "react-router-dom";
 
-const Main = ({ showContactModal }) => {
+const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
+  const totalPages = 10;
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
+  // console.log(animes[0].title_english)
   return (
     <>
       <section id="home-main">
@@ -19,51 +21,91 @@ const Main = ({ showContactModal }) => {
                 <div className="anime__first-4">
                   <h1 className="anime__first-4--header">Anime</h1>
                   <div className="anime__first-4--content">
-                    {Array.from({ length: 4 }).map((_, index) => (
-                      <AnimeCard key={index} />
-                    ))}
-                    {/* {Array.from({ length: 4 }).map((_, index) => (
-                      <AnimeCardSkeleton key={index} />
-                    ))} */}
+                    {/* <img
+                      src={anime.length > 0 ? anime[0].animeImg : null}
+                      alt=""
+                    /> */}
+                    {/* {console.log(animes[0]?.images.webp)} */}
+                    {animes.length > 0
+                      ? animes
+                          .map((anime, index) => (
+                            <AnimeCard
+                              animeImg={anime?.images.jpg.image_url}
+                              animeTitle={anime?.title}
+                              animeTitleEnglish={anime?.title_english}
+                              animeTitleJapanese={anime?.title_japan}
+                              animeSynopsis={anime?.synopsis}
+                              key={index}
+                            />
+                          ))
+                          .slice(0, 4)
+                      : Array.from({ length: 4 }).map((_, index) => (
+                          <AnimeCardSkeleton key={index} />
+                        ))}
                   </div>
                 </div>
                 <div className="anime__remains">
                   <h1 className="anime__remains--header">The Rest</h1>
                   <div className="anime__remains--content">
-                    {Array.from({ length: 21 }).map((_, index) => (
-                      <AnimeCard key={index} />
-                    ))}
-                    {/* {Array.from({ length: 21 }).map((_, index) => (
-                      <AnimeCardSkeleton key={index} />
-                    ))} */}
+                    {animes.length > 0
+                      ? animes
+                          .map((anime, index) => (
+                            <AnimeCard
+                              animeImg={anime?.images.jpg.image_url}
+                              animeTitle={anime?.title}
+                              animeTitleEnglish={anime?.title_english}
+                              animeTitleJapanese={anime?.title_japan}
+                              animeSynopsis={anime?.synopsis}
+                              key={index}
+                            />
+                          ))
+                          .slice(4, 25)
+                      : Array.from({ length: 21 }).map((_, index) => (
+                          <AnimeCardSkeleton key={index} />
+                        ))}
                   </div>
                 </div>
                 <div className="anime__pagination">
-                  <button className="anime__pagination--wrapper anime__prev-page clickable">
+                  {/* <button className="anime__pagination--wrapper anime__prev-page clickable">
                     0
                   </button>
                   <button className="anime__pagination--wrapper anime__current-page clickable">
                     1
-                  </button>
-                  <button className="anime__pagination--wrapper anime__next-page clickable">
-                    2
-                  </button>
+                  </button> */}
+                  {[...Array(totalPages)].map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handlePageChange(index + 1)}
+                      className="anime__pagination--wrapper anime__next-page clickable"
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
                 </div>
               </div>
               <div className="featured">
-
-              <div className="anime__top-10">
-                <h1 className="anime__top-10--header">Top 10</h1>
-                <div className="anime__top-10--content">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <AnimeRankBar index={index} key={index} />
-                  ))}
-                  {/* {Array.from({ length: 10 }).map((_, index) => (
-                    <AnimeRankSkeleton key={index} />
-                  ))} */}
+                <div className="anime__top-10">
+                  <h1 className="anime__top-10--header">Top 10</h1>
+                  <div className="anime__top-10--content">
+                    {ranks.length > 0
+                      ? ranks
+                          .map((rank, index) => (
+                            <AnimeRankBar
+                              key={index}
+                              index={index}
+                              rankImg={rank?.images.jpg.image_url}
+                              rankTitle={rank?.title}
+                              rankTitleEnglish={rank?.title_english}
+                              rankTitleJapanese={rank?.title_japan}
+                            />
+                          ))
+                          .slice(0, 10)
+                      : Array.from({ length: 10 }).map((_, index) => (
+                          <AnimeRankSkeleton key={index} />
+                        ))}
+                  </div>
                 </div>
-              </div>
-              <PostBox />
+                <PostBox />
               </div>
             </div>
           </div>

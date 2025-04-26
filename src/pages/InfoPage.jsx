@@ -4,12 +4,18 @@ import Navbar from "../layouts/Navbar";
 import Main from "../features/HomePage/components/HomeMain";
 import ContactModal from "../components/ContactModal";
 import InfoMain from "../features/InfoPage/components/InfoMain";
+import { useParams } from "react-router-dom";
 
 const InfoPage = ({
   toggleTheme,
   showContactModal,
   toggleContactModal,
+  ranks,
+  animes,
 }) => {
+
+
+  
   return (
     <>
       <Banner page={"main"} />
@@ -22,7 +28,9 @@ const InfoPage = ({
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
       />
-      <InfoMain />
+      <InfoMain animes={animes}
+       ranks={ranks}
+        />
       <Footer toggleContactModal={toggleContactModal} />
     </>
   );
