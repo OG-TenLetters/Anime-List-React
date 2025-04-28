@@ -36,7 +36,7 @@ function App() {
   };
 
   async function renderAnimes() {
-    const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}`);
+    const { data } = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&sfw`);
     const animesData = data.data;
     setAnimes(animesData);
   }
@@ -46,31 +46,28 @@ function App() {
     setRanks(ranksData);
   }
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       renderAnimes();
-  }, fetchInterval);
-  return () => clearTimeout(timer); // Cleanup the timer on unmount
+    }, fetchInterval);
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       renderAnimes();
-  }, fetchInterval);
-  return () => clearTimeout(timer); // Cleanup the timer on unmount
+    }, fetchInterval);
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, [currentPage]);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
       renderRanks();
-  }, fetchInterval);
-
-  return () => clearTimeout(timer); // Cleanup the timer on unmount
+    }, fetchInterval);
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
-
-
-
-
   return (
     <Router>
       <div className="App">
@@ -105,9 +102,8 @@ function App() {
             path="/home/info/:id"
             element={
               <InfoPage
-              animes={animes}
-              ranks={ranks}
-
+                animes={animes}
+                ranks={ranks}
                 setShowContactModal={setShowContactModal}
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}

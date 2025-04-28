@@ -10,7 +10,6 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
     setCurrentPage(page);
   };
 
-  // console.log(animes[0].title_english)
   return (
     <>
       <section id="home-main">
@@ -21,15 +20,11 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                 <div className="anime__first-4">
                   <h1 className="anime__first-4--header">Anime</h1>
                   <div className="anime__first-4--content">
-                    {/* <img
-                      src={anime.length > 0 ? anime[0].animeImg : null}
-                      alt=""
-                    /> */}
-                    {/* {console.log(animes[0]?.images.webp)} */}
                     {animes.length > 0
                       ? animes
                           .map((anime, index) => (
                             <AnimeCard
+                              animeId={anime?.mal_id}
                               animeImg={anime?.images.jpg.image_url}
                               animeTitle={anime?.title}
                               animeTitleEnglish={anime?.title_english}
@@ -51,6 +46,7 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                       ? animes
                           .map((anime, index) => (
                             <AnimeCard
+                              animeId={anime?.mal_id}
                               animeImg={anime?.images.jpg.image_url}
                               animeTitle={anime?.title}
                               animeTitleEnglish={anime?.title_english}
@@ -66,12 +62,6 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                   </div>
                 </div>
                 <div className="anime__pagination">
-                  {/* <button className="anime__pagination--wrapper anime__prev-page clickable">
-                    0
-                  </button>
-                  <button className="anime__pagination--wrapper anime__current-page clickable">
-                    1
-                  </button> */}
                   {[...Array(totalPages)].map((_, index) => (
                     <button
                       key={index}
@@ -93,6 +83,7 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                             <AnimeRankBar
                               key={index}
                               index={index}
+                              mal_id={rank?.mal_id}
                               rankImg={rank?.images.jpg.image_url}
                               rankTitle={rank?.title}
                               rankTitleEnglish={rank?.title_english}
