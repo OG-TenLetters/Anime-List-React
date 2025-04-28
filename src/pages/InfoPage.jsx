@@ -14,29 +14,39 @@ const InfoPage = ({
   ranks,
   animes,
 }) => {
-
   const [anime, setAnime] = useState({});
-  const { id } = useParams()
-  const animeId = id
-  const rankId = id
+  const [animeRec, setAnimeRec] = useState([]);
+  const { id } = useParams();
+  const animeId = id;
+  const rankId = id;
   const fetchInterval = 1000; // 1 second between requests
 
-
-async function renderAnime() {
-  const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
-  const animeData = data.data;
-  console.log("Anime ID: ", animeId);
-console.log("Rank ID: ", rankId);
-
-  setAnime(animeData);
-}
-console.log(id)
+  async function renderAnime() {
+    const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    const animeData = data.data;
+    setAnime(animeData);
+  }
+  async function renderAnimeRec() {
+    const { data } = await axios.get(
+      `https://api.jikan.moe/v4/recommendations/anime`
+    );
+    const animeRecData = data.data;
+    setAnimeRec(animeRecData);
+    console.log(animeRecData);
+  }
   useEffect(() => {
     const timer = setTimeout(() => {
       renderAnime();
     }, fetchInterval);
     return () => clearTimeout(timer);
   }, [id]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      renderAnimeRec();
+    }, fetchInterval);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -50,7 +60,15 @@ console.log(id)
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
       />
-      <InfoMain animeId={id} rankId={id} anime={anime} animes={animes} ranks={ranks} />
+      <InfoMain
+        showContactModal={showContactModal}
+        animeRec={animeRec}
+        animeId={id}
+        rankId={id}
+        anime={anime}
+        animes={animes}
+        ranks={ranks}
+      />
       <Footer toggleContactModal={toggleContactModal} />
     </>
   );

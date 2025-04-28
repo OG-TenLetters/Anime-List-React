@@ -4,7 +4,7 @@ import AnimeRankBar from "../../../components/AnimeRankBar";
 import AnimeRankSkeleton from "../../../components/AnimeRankSkeleton";
 import PostBox from "../../../components/PostBox";
 
-const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
+const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
   const totalPages = 10;
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -20,8 +20,8 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                 <div className="anime__first-4">
                   <h1 className="anime__first-4--header">Anime</h1>
                   <div className="anime__first-4--content">
-                    {animes.length > 0
-                      ? animes
+                    {(animes || movies).length > 0
+                      ? (animes || movies)
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}
@@ -42,8 +42,8 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal }) => {
                 <div className="anime__remains">
                   <h1 className="anime__remains--header">The Rest</h1>
                   <div className="anime__remains--content">
-                    {animes.length > 0
-                      ? animes
+                    {(animes || movies).length > 0
+                      ? (animes || movies)
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}

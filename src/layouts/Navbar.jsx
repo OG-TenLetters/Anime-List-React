@@ -20,7 +20,14 @@ import { useNavigate } from "react-router-dom";
 import NavbarMenu from "./ui/NavbarMenu";
 // import { Link } from "react-router-dom";
 
-const Navbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
+const Navbar = ({
+  toggleTheme,
+  showContactModal,
+  toggleContactModal,
+  movies,
+  setMovies,
+  renderMovies,
+}) => {
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -37,6 +44,8 @@ const Navbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
   return (
     <>
       <NavbarMenu
+        renderMovies={renderMovies}
+        setMovies={setMovies}
         toggleMenu={toggleMenu}
         showContactModal={showContactModal}
         toggleContactModal={toggleContactModal}

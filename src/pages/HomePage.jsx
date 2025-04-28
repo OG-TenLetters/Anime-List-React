@@ -11,11 +11,17 @@ const HomePage = ({
   animes,
   ranks,
   setCurrentPage,
+  movies,
+  setMovies,
+  renderMovies,
 }) => {
   return (
     <>
       <Banner page={"main"} />
       <Navbar
+        renderMovies={renderMovies}
+        movies={movies}
+        setMovies={setMovies}
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
         toggleTheme={toggleTheme}
@@ -28,6 +34,7 @@ const HomePage = ({
         showContactModal={showContactModal}
         animes={animes}
         ranks={ranks}
+        movies={movies}
         setCurrentPage={setCurrentPage}
       />
       <Footer toggleContactModal={toggleContactModal} />
