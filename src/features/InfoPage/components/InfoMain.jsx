@@ -3,14 +3,12 @@ import AnimeCardSkeleton from "../../../components/AnimeCardSkeleton";
 import AnimeRankBar from "../../../components/AnimeRankBar";
 import AnimeRankSkeleton from "../../../components/AnimeRankSkeleton";
 import PostBox from "../../../components/PostBox";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
-import ShareBox from "../../../components/ShareBox";
 import AnimeCard from "../../../components/AnimeCard";
 import { useNavigate } from "react-router-dom";
-import SkeletonImg from "../../../assets/Skeleton.jpg";
+import InfoTemplateSkeleton from "../../../components/InfoTemplateSkeleton";
+import InfoTemplate from "../../../components/InfoTemplate";
 
-const InfoMain = ({ animeRec, anime, ranks, showContactModal }) => {
+const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,220 +18,41 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal }) => {
           <div className="home__row">
             <div className="anime-tab anime-info-tab">
               <div className="anime__contents">
-                {anime !== null ? (
-                  <div className={`template__content ${showContactModal && "hide"} `}>
-                    <img
-                      className="template__cover-bg"
-                      src={anime?.images?.webp?.image_url}
-                      alt=""
-                    />
-                    <button
-                      onClick={() => navigate("/home")}
-                      className="back__btn"
-                    >
-                      <FontAwesomeIcon icon={faArrowLeft} /> Back
-                    </button>
-                    <figure className="template__img--wrapper">
-                      <div className="template__g-rating">18+</div>
-                      <img
-                        src={anime?.images?.webp?.large_image_url}
-                        alt=""
-                        className="template__img"
-                      />
-                    </figure>
-                    <div className="template__title">
-                      <h2 className="template__title-text">
-                        {anime?.title_english ||
-                          anime?.title ||
-                          anime?.title_japan}
-                      </h2>
-                      <div className="template__glass"></div>
-                    </div>
-                    <button className="add-to-list--btn">
-                      <FontAwesomeIcon icon={faPlus} />
-                      Add To List
-                    </button>
-                    <div className="template__details">
-                      <div className="template__summary">{anime?.synopsis}</div>
-                      <div className="template__self-promo">
-                        Anithon is the best site to keep track of all of your
-                        favorite anime! Or manga, shows, and movies! Whatever
-                        you decide, it will be here.
-                      </div>
-                      <div className="template__share">
-                        <ShareBox />
-                      </div>
-                      <div className="template__extra">
-                        <p>
-                          <b>Japanese:</b>{" "}
-                          {anime?.title_japanese || "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Synonyms:</b>{" "}
-                          {anime?.title_synonyms === ""
-                            ? anime.title_synonyms
-                            : "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Aired:</b>{" "}
-                          {anime?.aired?.string || "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Duration:</b>{" "}
-                          {anime?.duration || "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Status:</b>{" "}
-                          {anime?.status || "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>MAL Score:</b>{" "}
-                          {anime?.score || "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Genres:</b>{" "}
-                          {anime?.genres?.length > 0
-                            ? anime.genres.map((genre) => genre.name).join(", ")
-                            : "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Studios:</b>{" "}
-                          {anime?.studios?.length > 0
-                            ? anime.studios
-                                .map((studio) => studio.name)
-                                .join(", ")
-                            : "Currently Not Found"}
-                        </p>
-                        <p>
-                          <b>Producers:</b>{" "}
-                          {anime?.producers?.length > 0
-                            ? anime.producers
-                                .map((producer) => producer.name)
-                                .join(", ")
-                            : "Currently Not Found"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                {isLoading ? (
+                  <InfoTemplateSkeleton />
                 ) : (
-                  <div className="template__content--skeleton">
-                    <img
-                      className="template__cover-bg--skeleton"
-                      src={SkeletonImg}
-                      alt=""
-                    />
-                    <button
-                      onClick={() => navigate("/home")}
-                      className="back__btn"
-                    >
-                      <FontAwesomeIcon icon={faArrowLeft} /> Back
-                    </button>
-                    <figure className="template__img--wrapper--skeleton">
-                      <div className="template__g-rating">18+</div>
-                      <img
-                        src={SkeletonImg}
-                        alt=""
-                        className="template__img--skeleton"
-                      />
-                    </figure>
-                    <div className="template__title--skeleton">
-                      <h2 className="template__title-text--skeleton">
-                        {" ███████████████"}
-                      </h2>
-                      <div className="template__glass--skeleton"></div>
-                    </div>
-                    <button className="add-to-list--btn">
-                      <FontAwesomeIcon icon={faPlus} />
-                      Add To List
-                    </button>
-                    <div className="template__details--skeleton">
-                      <div className="template__summary--skeleton">
-                        █████ ███ ███ █████ ██████ ████ ███ ████ █ ████ ████
-                        ████ ████ ██ █ █████████ ████ █████████████ █████████
-                        ████ ████ ██ █ █████ █████ ████ ███ ███ ███ ███
-                        ██████████ ██ ██████ ████ █████ ██████ ██ █ ██ ███ ███
-                        ████ █████ █████████ ███ █ ████ ██ ████ ████ ██ ████
-                        ████████ █████ █████ ███ ███ █████ ██████ ████ ███ ████
-                        █ ████ ████ ████ ████ ██ █ █████████ ████ █████████████
-                        █████████ ████ ████ ██ █ █████ █████ ████ ███ ███ ███
-                        ███ ██████████ ██ ██████ ████ █████ ██████ ██ █ ██ ███
-                        ███ ████ █████ █████████ ███ █ ████ ██ ████ ████ ██ ████
-                        ████████ █████ █████ ███ ███ █████ ██████ ████ ███ ████
-                        █ ████ ████ ████ ████ ██ █ █████████ ████ █████████████
-                        █████████ ████ ████ ██ █ █████ █████ ████ ███ ███ ███
-                        ███ ██████████ ██ ██████ ████ █████ ██████ ██ █ ██ ███
-                        ███ ████ █████ █████████ ███ █ ████ ██ ████ ████ ██ ████
-                        ████████ █████ █████ ███ ███ █████ ██████ ████ ███ ████
-                        █ ████ ████ ████ ████ ██ █ █████████ ████ █████████████
-                        █████████ ████ ████ ██ █ █████ █████ ████ ███ ███ ███
-                        ███ ██████████ ██ ██████ ████ █████ ██████ ██ █ ██ ███
-                        ███ ████ █████ █████████ ███ █ ████ ██ ████ ████ ██ ████
-                        ████████ █████
-                      </div>
-                      <div className="template__self-promo">
-                        Anithon is the best site to keep track of all of your
-                        favorite anime! Or manga, shows, and movies! Whatever
-                        you decide, it will be here.
-                      </div>
-                      <div className="template__share">
-                        <ShareBox />
-                      </div>
-                      <div className="template__extra--skeleton">
-                        <p>
-                          <b>Japanese:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Synonyms:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Aired:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Duration:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Status:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>MAL Score:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Genres:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Studios:</b>
-                          {" ███████████████"}
-                        </p>
-                        <p>
-                          <b>Producers:</b>
-                          {" ███████████████"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <InfoTemplate
+                    showContactModal={showContactModal}
+                    anime={anime}
+                    navigate={navigate}
+                  />
                 )}
-
-                <div className={`anime__recommendations--content ${showContactModal && "hide"}`}>
+                <div
+                  className={`anime__recommendations--content ${
+                    showContactModal && "hide"
+                  }`}
+                >
                   <h2 className="anime__recommendations--header">
                     Recommended for you
                   </h2>
                   <div className="anime__remains--content">
-                    {animeRec.length > 0
+                    {isLoading
+                      ? Array.from({ length: 8 }).map((_, index) => (
+                          <AnimeCardSkeleton key={index} />
+                        ))
+                      : animeRec.length > 0
                       ? animeRec
-                          .map((anime, index) => <AnimeCard
-                          animeId={anime?.entry[0]?.mal_id}
-                          animeImg={anime?.entry[0]?.images?.webp?.image_url}
-                          animeTitle={anime?.entry[0]?.title}
-                          animeSynopsis={anime?.synopsis}
-                          key={index}
-                          />)
+                          .map((anime, index) => (
+                            <AnimeCard
+                              animeId={anime?.entry[0]?.mal_id}
+                              animeImg={
+                                anime?.entry[0]?.images?.webp?.image_url
+                              }
+                              animeTitle={anime?.entry[0]?.title}
+                              animeSynopsis={anime?.synopsis}
+                              key={index}
+                            />
+                          ))
                           .slice(0, 8)
                       : Array.from({ length: 8 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
@@ -245,7 +64,11 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal }) => {
                 <div className="anime__top-10">
                   <h1 className="anime__top-10--header">Top 10</h1>
                   <div className="anime__top-10--content">
-                    {ranks.length > 0
+                    {isLoading
+                      ? Array.from({ length: 10 }).map((_, index) => (
+                          <AnimeRankSkeleton key={index} />
+                        ))
+                      : ranks.length > 0
                       ? ranks
                           .map((rank, index) => (
                             <AnimeRankBar

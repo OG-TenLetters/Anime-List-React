@@ -13,6 +13,7 @@ const InfoPage = ({
   toggleContactModal,
   ranks,
   animes,
+  isLoading,
 }) => {
   const [anime, setAnime] = useState({});
   const [animeRec, setAnimeRec] = useState([]);
@@ -60,6 +61,7 @@ const InfoPage = ({
         showContactModal={showContactModal}
       />
       <InfoMain
+        isLoading={isLoading}
         showContactModal={showContactModal}
         animeRec={animeRec}
         animeId={id}

@@ -2,7 +2,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes }) => {
+const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, renderManga, setAnimes, setManga }) => {
   const navigate = useNavigate()
   const closeMenuToggleContact = () => {
     toggleMenu();
@@ -19,6 +19,12 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes })
     console.log("Movies Data in NavbarMenu:", moviesData)
     setAnimes(moviesData);
     console.log("setAnimes called with:", moviesData);
+  }
+  const closeMenuRenderManga = async (path) => {
+    toggleMenu()
+    navigate(path)
+    const mangaData = await renderManga();
+    setManga(mangaData)
   }
 
   return (
@@ -39,24 +45,24 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes })
                 Movies
               </li>
             </div>
-            <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
-              <li className="nav__menu--link clickable link__hover-effect">
+            <div onClick={() => closeMenuRenderManga("/home")} className="nav__menu--link-box">
+              <li className="nav__menu--link clickable link__hover-effect nope">
                 Manga
               </li>
             </div>
 
             <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
-              <li className="nav__menu--link clickable link__hover-effect">
+              <li className="nav__menu--link clickable link__hover-effect nope">
                 Shows
               </li>
             </div>
             <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
-              <li className="nav__menu--link clickable link__hover-effect">
+              <li className="nav__menu--link clickable link__hover-effect nope">
                 Featured
               </li>
             </div>
             <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
-              <li className="nav__menu--link clickable link__hover-effect">
+              <li className="nav__menu--link clickable link__hover-effect nope">
                 Personal List
               </li>
             </div>

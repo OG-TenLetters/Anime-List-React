@@ -4,7 +4,13 @@ import AnimeRankBar from "../../../components/AnimeRankBar";
 import AnimeRankSkeleton from "../../../components/AnimeRankSkeleton";
 import PostBox from "../../../components/PostBox";
 
-const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
+const Main = ({
+  animes,
+  ranks,
+  setCurrentPage,
+  showContactModal,
+  isLoading,
+}) => {
   const totalPages = 10;
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -20,7 +26,11 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
                 <div className="anime__first-4">
                   <h1 className="anime__first-4--header">Anime</h1>
                   <div className="anime__first-4--content">
-                    {(animes || []).length > 0
+                    {isLoading
+                      ? Array.from({ length: 4 }).map((_, index) => (
+                          <AnimeCardSkeleton key={index} />
+                        ))
+                      : (animes || []).length > 0
                       ? animes
                           .map((anime, index) => (
                             <AnimeCard
@@ -42,7 +52,11 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
                 <div className="anime__remains">
                   <h1 className="anime__remains--header">The Rest</h1>
                   <div className="anime__remains--content">
-                    {(animes || []).length > 0
+                    {isLoading
+                      ? Array.from({ length: 4 }).map((_, index) => (
+                          <AnimeCardSkeleton key={index} />
+                        ))
+                      : (animes || []).length > 0
                       ? animes
                           .map((anime, index) => (
                             <AnimeCard
@@ -77,7 +91,11 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
                 <div className="anime__top-10">
                   <h1 className="anime__top-10--header">Top 10</h1>
                   <div className="anime__top-10--content">
-                    {ranks.length > 0
+                    {isLoading
+                      ? Array.from({ length: 10 }).map((_, index) => (
+                          <AnimeRankSkeleton key={index} />
+                        ))
+                      : ranks.length > 0
                       ? ranks
                           .map((rank, index) => (
                             <AnimeRankBar

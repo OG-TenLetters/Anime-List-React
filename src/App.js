@@ -9,7 +9,9 @@ function App() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [animes, setAnimes] = useState([null]);
+  const [manga, setManga] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
   const fetchInterval = 1000; // 1 second between requests
@@ -37,33 +39,34 @@ function App() {
   };
 
   async function renderAnimes() {
+    setIsLoading(true);
     const { data } = await axios.get(
       `https://api.jikan.moe/v4/anime?page=${currentPage}&sfw`
     );
     const animesData = data.data;
     setAnimes(animesData);
+    setIsLoading(false);
   }
-  // async function renderRanks() {
-  //   const { data } = await axios.get(`https://api.jikan.moe/v4/top/anime`);
-  //   const ranksData = data.data;
-  //   setRanks(ranksData);
-  // }
+  async function renderRanks() {
+    setIsLoading(true);
+    const { data } = await axios.get(`https://api.jikan.moe/v4/top/anime`);
+    const ranksData = data.data;
+    setRanks(ranksData);
+    setIsLoading(false);
+  }
   async function renderMovies() {
-    console.log("renderMovies called from NavbarMenu")
+    setIsLoading(true);
     const { data } = await axios.get(
       "https://api.jikan.moe/v4/anime?type=movie"
     );
     const moviesData = data.data;
     setMovies(moviesData);
-    console.log("Movies Data fetched:", moviesData);
+    setAnimes(moviesData);
+    setIsLoading(false);
     return moviesData;
   }
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      renderAnimes();
-    }, fetchInterval);
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, []);
+
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -72,19 +75,12 @@ function App() {
     return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, []);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     renderRanks();
-  //   }, fetchInterval);
-  //   return () => clearTimeout(timer); // Cleanup the timer on unmount
-  // }, [setRanks]);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     // renderMovies();
-  //   }, fetchInterval);
-  //   return () => clearTimeout(timer); // Cleanup the timer on unmount
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      renderRanks();
+    }, fetchInterval);
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, [setRanks]);
 
   return (
     <Router>
@@ -106,12 +102,13 @@ function App() {
             path="/home"
             element={
               <HomePage
+                isLoading={isLoading}
                 setAnimes={setAnimes}
+                setMovies={setMovies}
+                setManga={setManga}
                 renderMovies={renderMovies}
                 animes={animes}
                 ranks={ranks}
-                setMovies={setMovies}
-                movies={movies}
                 setCurrentPage={setCurrentPage}
                 setShowContactModal={setShowContactModal}
                 showContactModal={showContactModal}
@@ -124,6 +121,7 @@ function App() {
             path="/home/info/:id"
             element={
               <InfoPage
+                isLoading={isLoading}
                 animes={animes}
                 ranks={ranks}
                 setShowContactModal={setShowContactModal}

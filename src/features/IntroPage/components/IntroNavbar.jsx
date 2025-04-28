@@ -16,12 +16,12 @@ const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
         <li className="intro__nav--link link__hover-effect clickable">
           Movies
         </li>
-        <li className="intro__nav--link link__hover-effect clickable">Manga</li>
-        <li className="intro__nav--link link__hover-effect clickable">Shows</li>
-        <li className="intro__nav--link link__hover-effect clickable">
+        <li className="intro__nav--link link__hover-effect nope">Manga</li>
+        <li className="intro__nav--link link__hover-effect nope">Shows</li>
+        <li className="intro__nav--link link__hover-effect nope">
           Featured
         </li>
-        <li className="intro__nav--link link__hover-effect clickable">
+        <li className="intro__nav--link link__hover-effect nope">
           Personal List
         </li>
         <li

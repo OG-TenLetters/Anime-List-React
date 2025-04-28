@@ -27,8 +27,10 @@ const Navbar = ({
   movies,
   setMovies,
   setAnimes,
+  setManga,
   renderMovies,
-  fetchMovies,
+  renderManga,
+
 }) => {
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -47,8 +49,9 @@ const Navbar = ({
     <>
       <NavbarMenu
         renderMovies={renderMovies}
+        renderManga={renderManga}
         setAnimes={setAnimes}
-        fetchMovies={fetchMovies}
+        setManga={setManga}
         setMovies={setMovies}
         toggleMenu={toggleMenu}
         showContactModal={showContactModal}
