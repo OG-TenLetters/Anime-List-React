@@ -2,7 +2,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
-const NavbarMenu = ({ toggleMenu, toggleContactModal, setMovies, renderMovies }) => {
+const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes }) => {
   const navigate = useNavigate()
   const closeMenuToggleContact = () => {
     toggleMenu();
@@ -12,12 +12,15 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, setMovies, renderMovies })
     toggleMenu()
     navigate(path)
   }
-  const closeMenuRenderMovies = (path) => {
+  const closeMenuRenderMovies = async (path) => {
     toggleMenu()
     navigate(path)
-    setMovies(true)
-    renderMovies()
+    const moviesData = await renderMovies();
+    console.log("Movies Data in NavbarMenu:", moviesData)
+    setAnimes(moviesData);
+    console.log("setAnimes called with:", moviesData);
   }
+
   return (
     <>
       <div className="nav__menu--backdrop">
@@ -26,12 +29,12 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, setMovies, renderMovies })
         </button>
         <div className="nav__menu--bg">
           <ul className="nav__menu--links">
-            <div onClick={() => closeMenuRenderMovies("/home")} className="nav__menu--link-box">
+            <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
               <li className="nav__menu--link clickable link__hover-effect">
                 Home
               </li>
             </div>
-            <div onClick={() => closeMenuNavigate("/home")} className="nav__menu--link-box">
+            <div onClick={() => closeMenuRenderMovies("/home")} className="nav__menu--link-box">
               <li className="nav__menu--link clickable link__hover-effect">
                 Movies
               </li>

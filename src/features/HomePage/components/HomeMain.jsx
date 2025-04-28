@@ -20,8 +20,8 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
                 <div className="anime__first-4">
                   <h1 className="anime__first-4--header">Anime</h1>
                   <div className="anime__first-4--content">
-                    {(animes || movies).length > 0
-                      ? (animes || movies)
+                    {(animes || []).length > 0
+                      ? animes
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}
@@ -42,8 +42,8 @@ const Main = ({ animes, ranks, setCurrentPage, showContactModal, movies }) => {
                 <div className="anime__remains">
                   <h1 className="anime__remains--header">The Rest</h1>
                   <div className="anime__remains--content">
-                    {(animes || movies).length > 0
-                      ? (animes || movies)
+                    {(animes || []).length > 0
+                      ? animes
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}

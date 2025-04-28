@@ -32,7 +32,6 @@ const InfoPage = ({
     );
     const animeRecData = data.data;
     setAnimeRec(animeRecData);
-    console.log(animeRecData);
   }
   useEffect(() => {
     const timer = setTimeout(() => {

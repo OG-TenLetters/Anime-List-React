@@ -49,14 +49,15 @@ function App() {
   //   setRanks(ranksData);
   // }
   async function renderMovies() {
+    console.log("renderMovies called from NavbarMenu")
     const { data } = await axios.get(
       "https://api.jikan.moe/v4/anime?type=movie"
     );
     const moviesData = data.data;
     setMovies(moviesData);
-    console.log(moviesData);
+    console.log("Movies Data fetched:", moviesData);
+    return moviesData;
   }
-
   useEffect(() => {
     const timer = setTimeout(() => {
       renderAnimes();
@@ -78,12 +79,13 @@ function App() {
   //   return () => clearTimeout(timer); // Cleanup the timer on unmount
   // }, [setRanks]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      renderMovies();
-    }, fetchInterval);
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, [setMovies]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     // renderMovies();
+  //   }, fetchInterval);
+  //   return () => clearTimeout(timer); // Cleanup the timer on unmount
+  // }, []);
+
   return (
     <Router>
       <div className="App">
@@ -104,6 +106,7 @@ function App() {
             path="/home"
             element={
               <HomePage
+                setAnimes={setAnimes}
                 renderMovies={renderMovies}
                 animes={animes}
                 ranks={ranks}

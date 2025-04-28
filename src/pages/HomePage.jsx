@@ -12,13 +12,15 @@ const HomePage = ({
   ranks,
   setCurrentPage,
   movies,
-  setMovies,
+  setAnimes,
   renderMovies,
+  setMovies
 }) => {
   return (
     <>
       <Banner page={"main"} />
       <Navbar
+        setAnimes={setAnimes}
         renderMovies={renderMovies}
         movies={movies}
         setMovies={setMovies}
