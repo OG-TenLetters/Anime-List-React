@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import InfoTemplateSkeleton from "../../../components/InfoTemplateSkeleton";
 import InfoTemplate from "../../../components/InfoTemplate";
 
-const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading }) => {
+const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading}) => {
   const navigate = useNavigate();
 
   return (

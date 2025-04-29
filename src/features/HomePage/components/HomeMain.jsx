@@ -39,7 +39,7 @@ const Main = ({
                       animes
                           .map((anime, index) => (
                             <AnimeCard
-                              animeId={anime?.mal_id}
+                              id={anime?.mal_id}
                               animeImg={anime?.images.jpg.image_url}
                               animeTitle={anime?.title}
                               animeTitleEnglish={anime?.title_english}
@@ -88,7 +88,7 @@ const Main = ({
                       animes
                           .map((anime, index) => (
                             <AnimeCard
-                              animeId={anime?.mal_id}
+                              id={anime?.mal_id}
                               animeImg={anime?.images.jpg.image_url}
                               animeTitle={anime?.title}
                               animeTitleEnglish={anime?.title_english}
@@ -144,7 +144,7 @@ const Main = ({
                             <AnimeRankBar
                               key={index}
                               index={index}
-                              mal_id={rank?.mal_id}
+                              id={rank?.mal_id}
                               rankImg={rank?.images.jpg.image_url}
                               rankTitle={rank?.title}
                               rankTitleEnglish={rank?.title_english}

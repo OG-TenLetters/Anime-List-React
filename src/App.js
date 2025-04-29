@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import IntroPage from "./pages/IntroPage";
 import HomePage from "./pages/HomePage";
 import InfoPage from "./pages/InfoPage";
@@ -9,11 +9,14 @@ function App() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [animes, setAnimes] = useState([]);
+  const [search, setSearch] = useState('');
+
   const [setManga] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
   const fetchInterval = 400; // 1 second between requests
+  const searchInput = useParams()
   const toggleTheme = () => {
     if (isDark) {
       document.body.classList.remove("dark-theme");
@@ -74,18 +77,33 @@ function App() {
     return moviesData;
   }
 
+  const handleSearch = async () => {
+    const { data } = await axios.get(
+      `https://api.jikan.moe/v4/anime?q=${searchInput}`
+    );
+    const searchData = data.data;
+    setSearch(searchData);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleSearch();
+    }, fetchInterval);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       renderAnimes();
     }, fetchInterval);
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
+    return () => clearTimeout(timer); 
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       renderRanks();
     }, fetchInterval);
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
+    return () => clearTimeout(timer);
   }, [setRanks]);
 
   useEffect(() => {
@@ -94,7 +112,7 @@ function App() {
     }, fetchInterval);
     return () => clearTimeout(timer);
   }, [currentPage]);
-
+console.log(search)
   return (
     <Router>
       <div className="App">
@@ -113,6 +131,9 @@ function App() {
             path="/home"
             element={
               <HomePage
+                setSearch={setSearch}
+                search={search}
+                searchInput={searchInput}
                 isLoading={isLoading}
                 setAnimes={setAnimes}
                 setManga={setManga}

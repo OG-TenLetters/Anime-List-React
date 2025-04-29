@@ -22,7 +22,6 @@ const InfoPage = ({
   const [animeRec, setAnimeRec] = useState([]);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState([])
-  console.log(id)
   const fetchInterval = 1000; // 1 second between requests
 
   const renderAnime = useCallback(async () => {
@@ -38,21 +37,21 @@ const InfoPage = ({
     setAnimeRec(animeRecData);
   }
   useEffect(() => {
-    console.log("renderAnime - Before Fetch: isLoading =", isLoading);
+    // console.log("renderAnime - Before Fetch: isLoading =", isLoading);
     setIsLoading(true)
       renderAnime();
     setIsLoading(false)
-    console.log("renderAnime - After Fetch: isLoading =", isLoading);
+    // console.log("renderAnime - After Fetch: isLoading =", isLoading);
   }, [id, renderAnime]);
 
   useEffect(() => {
-    console.log("renderAnimeRec - Before Fetch: isLoading =", isLoading);
+    // console.log("renderAnimeRec - Before Fetch: isLoading =", isLoading);
     setIsLoading(true)
     const timer = setTimeout(() => {
       renderAnimeRec();
     }, fetchInterval);
     setIsLoading(false)
-    console.log("renderAnimeRec - After Fetch: isLoading =", isLoading);
+    // console.log("renderAnimeRec - After Fetch: isLoading =", isLoading);
     return () => clearTimeout(timer);
   }, []);
 
@@ -76,8 +75,6 @@ const InfoPage = ({
         isLoading={isLoading}
         showContactModal={showContactModal}
         animeRec={animeRec}
-        animeId={id}
-        rankId={id}
         anime={anime}
         animes={animes}
         ranks={ranks}

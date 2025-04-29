@@ -25,12 +25,12 @@ const Navbar = ({
   showContactModal,
   toggleContactModal,
   setAnimes,
-  setManga,
   renderMovies,
   renderManga,
+  renderAnimeData,
   animesData,
-  renderAnimeData
-
+  setSearch,
+  searchInput
 }) => {
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -45,16 +45,23 @@ const Navbar = ({
       setShowNavMenu(true);
     }
   };
-  
+
+  function handleSearchChange(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      const searchInput = event.target.value
+      setSearch(searchInput)
+    }
+  }
+
+
   return (
     <>
       <NavbarMenu
-      renderAnimeData={renderAnimeData}
-      animesData={animesData}
+        renderAnimeData={renderAnimeData}
+        animesData={animesData}
         renderMovies={renderMovies}
         renderManga={renderManga}
         setAnimes={setAnimes}
-        setManga={setManga}
         toggleMenu={toggleMenu}
         showContactModal={showContactModal}
         toggleContactModal={toggleContactModal}
@@ -77,7 +84,7 @@ const Navbar = ({
               <SiteLogo />
             </div>
             <div className="home__searchbar">
-              <input type="text" placeholder="Search..." />
+              <input onKeyUp={handleSearchChange} type="text" placeholder="Search..." />
               <div className="home__search--btns">
                 <div className="home__search--btn">
                   <FontAwesomeIcon icon={faSearch} />
@@ -130,7 +137,7 @@ const Navbar = ({
           </div>
           {showSearchBar ? (
             <div className="home__searchbar2">
-              <input type="text" placeholder="Search..." />
+              <input onSearch={setSearch} type="text" placeholder="Search..." />
               <div className="home__search--btns2">
                 <div className="home__search--btn2">
                   <FontAwesomeIcon icon={faSearch} />
