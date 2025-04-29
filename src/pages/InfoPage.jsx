@@ -4,7 +4,7 @@ import Navbar from "../layouts/Navbar";
 import ContactModal from "../components/ContactModal";
 import InfoMain from "../features/InfoPage/components/InfoMain";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 const InfoPage = ({
@@ -13,20 +13,23 @@ const InfoPage = ({
   toggleContactModal,
   ranks,
   animes,
-  isLoading,
+  renderManga,
+  renderMovies,
+  setAnimes,
+  renderAnimeData,
 }) => {
   const [anime, setAnime] = useState({});
   const [animeRec, setAnimeRec] = useState([]);
   const { id } = useParams();
-  const animeId = id;
-  const rankId = id;
+  const [isLoading, setIsLoading] = useState([])
+  console.log(id)
   const fetchInterval = 1000; // 1 second between requests
 
-  async function renderAnime() {
+  const renderAnime = useCallback(async () => {
     const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
     const animeData = data.data;
     setAnime(animeData);
-  }
+  }, [id] )
   async function renderAnimeRec() {
     const { data } = await axios.get(
       `https://api.jikan.moe/v4/recommendations/anime`
@@ -35,16 +38,21 @@ const InfoPage = ({
     setAnimeRec(animeRecData);
   }
   useEffect(() => {
-    const timer = setTimeout(() => {
+    console.log("renderAnime - Before Fetch: isLoading =", isLoading);
+    setIsLoading(true)
       renderAnime();
-    }, fetchInterval);
-    return () => clearTimeout(timer);
-  }, [id]);
+    setIsLoading(false)
+    console.log("renderAnime - After Fetch: isLoading =", isLoading);
+  }, [id, renderAnime]);
 
   useEffect(() => {
+    console.log("renderAnimeRec - Before Fetch: isLoading =", isLoading);
+    setIsLoading(true)
     const timer = setTimeout(() => {
       renderAnimeRec();
     }, fetchInterval);
+    setIsLoading(false)
+    console.log("renderAnimeRec - After Fetch: isLoading =", isLoading);
     return () => clearTimeout(timer);
   }, []);
 
@@ -52,6 +60,10 @@ const InfoPage = ({
     <>
       <Banner page={"main"} />
       <Navbar
+        renderAnimeData={renderAnimeData}
+        renderManga={renderManga}
+        renderMovies={renderMovies}
+        setAnimes={setAnimes}
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
         toggleTheme={toggleTheme}

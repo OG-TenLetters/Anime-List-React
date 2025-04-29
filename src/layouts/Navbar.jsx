@@ -24,12 +24,12 @@ const Navbar = ({
   toggleTheme,
   showContactModal,
   toggleContactModal,
-  movies,
-  setMovies,
   setAnimes,
   setManga,
   renderMovies,
   renderManga,
+  animesData,
+  renderAnimeData
 
 }) => {
   const navigate = useNavigate();
@@ -45,14 +45,16 @@ const Navbar = ({
       setShowNavMenu(true);
     }
   };
+  
   return (
     <>
       <NavbarMenu
+      renderAnimeData={renderAnimeData}
+      animesData={animesData}
         renderMovies={renderMovies}
         renderManga={renderManga}
         setAnimes={setAnimes}
         setManga={setManga}
-        setMovies={setMovies}
         toggleMenu={toggleMenu}
         showContactModal={showContactModal}
         toggleContactModal={toggleContactModal}
@@ -92,7 +94,7 @@ const Navbar = ({
             >
               <FontAwesomeIcon icon={faSearch} />
             </button>
-            <div className="home__social--links">
+            <div className="home__social--links nope">
               <div className="home__social--link">
                 <FontAwesomeIcon icon={faDiscord} />
               </div>
@@ -113,7 +115,7 @@ const Navbar = ({
               </div>
               <div className="languages__title">Anime Name</div>
             </div>
-            <div className="home__community">
+            <div className="home__community nope">
               <FontAwesomeIcon icon={faComments} />
               <div className="community__title">Community</div>
             </div>

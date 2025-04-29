@@ -11,7 +11,9 @@ const AnimeCardSkeleton = () => {
           <img className="anime-card__skeleton--img" src={Skeleton} alt="" />
           <div className="anime-card__skeleton--cover"></div>
         </figure>
-        <div className="anime-card__skeleton--title"><FontAwesomeIcon icon={faSpinner}/></div>
+        <div className="anime-card__skeleton--title--wrapper">
+          <div className="anime-card__skeleton--title"><FontAwesomeIcon icon={faSpinner}/></div>
+        </div>
       </div>
     </>
   );

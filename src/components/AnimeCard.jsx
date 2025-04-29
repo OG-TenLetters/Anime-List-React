@@ -14,7 +14,9 @@ const AnimeCard = ({ animeId, animeImg, animeTitle, animeTitleEnglish, animeTitl
             {animeSynopsis}
           </div>
         </figure>
-        <div className="anime-card__title">{animeTitle || animeTitleEnglish || animeTitleJapanese}</div>
+        <div className="anime-card__title--wrapper">
+          <div className="anime-card__title">{animeTitle || animeTitleEnglish || animeTitleJapanese}</div>
+        </div>
       </div>
     </>
   );

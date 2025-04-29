@@ -31,7 +31,12 @@ const Main = ({
                           <AnimeCardSkeleton key={index} />
                         ))
                       : (animes || []).length > 0
-                      ? animes
+                      ?
+                      // Array.from({ length: 4 }).map((_, index) => (
+                      //   <AnimeCardSkeleton key={index} />
+                      // ))
+                      
+                      animes
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}
@@ -44,20 +49,43 @@ const Main = ({
                             />
                           ))
                           .slice(0, 4)
-                      : Array.from({ length: 4 }).map((_, index) => (
+                      : 
+                      Array.from({ length: 4 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
-                        ))}
+                        ))
+                        
+                        // animes
+                        // .map((anime, index) => (
+                        //   <AnimeCard
+                        //     animeId={anime?.mal_id}
+                        //     animeImg={anime?.images.jpg.image_url}
+                        //     animeTitle={anime?.title}
+                        //     animeTitleEnglish={anime?.title_english}
+                        //     animeTitleJapanese={anime?.title_japan}
+                        //     animeSynopsis={anime?.synopsis}
+                        //     key={index}
+                        //   />
+                        // ))
+                        // .slice(0, 4)
+                        
+                        
+                        
+                        }
                   </div>
                 </div>
                 <div className="anime__remains">
                   <h1 className="anime__remains--header">The Rest</h1>
                   <div className="anime__remains--content">
                     {isLoading
-                      ? Array.from({ length: 4 }).map((_, index) => (
+                      ? Array.from({ length: 21 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
                         ))
                       : (animes || []).length > 0
-                      ? animes
+                      ? 
+                      // Array.from({ length: 21 }).map((_, index) => (
+                      //   <AnimeCardSkeleton key={index} />
+                      // ))
+                      animes
                           .map((anime, index) => (
                             <AnimeCard
                               animeId={anime?.mal_id}
@@ -70,9 +98,24 @@ const Main = ({
                             />
                           ))
                           .slice(4, 25)
-                      : Array.from({ length: 21 }).map((_, index) => (
+                      :
+                       Array.from({ length: 21 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
-                        ))}
+                        ))
+                        // animes
+                        // .map((anime, index) => (
+                        //   <AnimeCard
+                        //     animeId={anime?.mal_id}
+                        //     animeImg={anime?.images.jpg.image_url}
+                        //     animeTitle={anime?.title}
+                        //     animeTitleEnglish={anime?.title_english}
+                        //     animeTitleJapanese={anime?.title_japan}
+                        //     animeSynopsis={anime?.synopsis}
+                        //     key={index}
+                        //   />
+                        // ))
+                        // .slice(4, 25)
+                        }
                   </div>
                 </div>
                 <div className="anime__pagination">

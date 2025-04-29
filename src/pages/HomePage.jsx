@@ -12,21 +12,22 @@ const HomePage = ({
   ranks,
   setCurrentPage,
   setAnimes,
-  setMovies,
   setManga,
   renderMovies,
   renderManga,
   isLoading,
+  renderAnimeData
+
 }) => {
   return (
     <>
       <Banner page={"main"} />
       <Navbar
+      renderAnimeData={renderAnimeData}
         renderManga={renderManga}
         setAnimes={setAnimes}
         setManga={setManga}
         renderMovies={renderMovies}
-        setMovies={setMovies}
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
         toggleTheme={toggleTheme}

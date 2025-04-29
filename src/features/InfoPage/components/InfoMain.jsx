@@ -20,12 +20,25 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading }) => {
               <div className="anime__contents">
                 {isLoading ? (
                   <InfoTemplateSkeleton />
-                ) : (
+                ) : ( anime
+                  ?
+                  // < InfoTemplateSkeleton />
+
+
                   <InfoTemplate
                     showContactModal={showContactModal}
                     anime={anime}
                     navigate={navigate}
                   />
+                  : 
+                  
+                  // <InfoTemplate
+                  //   showContactModal={showContactModal}
+                  //   anime={anime}
+                  //   navigate={navigate}
+                  // />
+                  
+                  < InfoTemplateSkeleton />
                 )}
                 <div
                   className={`anime__recommendations--content ${

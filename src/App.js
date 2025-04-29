@@ -8,13 +8,12 @@ import axios from "axios";
 function App() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [animes, setAnimes] = useState([null]);
-  const [manga, setManga] = useState([]);
-  const [movies, setMovies] = useState([]);
+  const [animes, setAnimes] = useState([]);
+  const [setManga] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
-  const fetchInterval = 1000; // 1 second between requests
+  const fetchInterval = 400; // 1 second between requests
   const toggleTheme = () => {
     if (isDark) {
       document.body.classList.remove("dark-theme");
@@ -47,6 +46,16 @@ function App() {
     setAnimes(animesData);
     setIsLoading(false);
   }
+  async function renderAnimeData() {
+    setIsLoading(true);
+    const { data } = await axios.get(
+      `https://api.jikan.moe/v4/anime?page=${currentPage}&sfw`
+    );
+    const animesData = data.data;
+    setAnimes(animesData);
+    setIsLoading(false);
+    return animesData;
+  }
   async function renderRanks() {
     setIsLoading(true);
     const { data } = await axios.get(`https://api.jikan.moe/v4/top/anime`);
@@ -60,13 +69,10 @@ function App() {
       "https://api.jikan.moe/v4/anime?type=movie"
     );
     const moviesData = data.data;
-    setMovies(moviesData);
     setAnimes(moviesData);
     setIsLoading(false);
     return moviesData;
   }
-
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -82,6 +88,13 @@ function App() {
     return () => clearTimeout(timer); // Cleanup the timer on unmount
   }, [setRanks]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      renderAnimes();
+    }, fetchInterval);
+    return () => clearTimeout(timer);
+  }, [currentPage]);
+
   return (
     <Router>
       <div className="App">
@@ -95,17 +108,15 @@ function App() {
                 toggleContactModal={toggleContactModal}
               />
             }
-          >
-            Intro Page
-          </Route>
+          ></Route>
           <Route
             path="/home"
             element={
               <HomePage
                 isLoading={isLoading}
                 setAnimes={setAnimes}
-                setMovies={setMovies}
                 setManga={setManga}
+                renderAnimeData={renderAnimeData}
                 renderMovies={renderMovies}
                 animes={animes}
                 ranks={ranks}
@@ -124,6 +135,9 @@ function App() {
                 isLoading={isLoading}
                 animes={animes}
                 ranks={ranks}
+                renderMovies={renderMovies}
+                renderAnimeData
+                setAnimes={setAnimes}
                 setShowContactModal={setShowContactModal}
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}
