@@ -12,7 +12,7 @@ const Main = ({
   isLoading,
   searchQuery,
 }) => {
-  const totalPages = 10;
+  const totalPages = 5;
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
