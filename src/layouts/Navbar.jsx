@@ -29,8 +29,7 @@ const Navbar = ({
   renderManga,
   renderAnimeData,
   animesData,
-  setSearch,
-  searchInput
+  setSearchQuery,
 }) => {
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
@@ -49,7 +48,7 @@ const Navbar = ({
   function handleSearchChange(event) {
     if (event.key === 'Enter' || event.keyCode === 13) {
       const searchInput = event.target.value
-      setSearch(searchInput)
+      setSearchQuery(searchInput)
     }
   }
 
@@ -137,7 +136,7 @@ const Navbar = ({
           </div>
           {showSearchBar ? (
             <div className="home__searchbar2">
-              <input onSearch={setSearch} type="text" placeholder="Search..." />
+              <input onKeyUp={handleSearchChange} type="text" placeholder="Search..." />
               <div className="home__search--btns2">
                 <div className="home__search--btn2">
                   <FontAwesomeIcon icon={faSearch} />

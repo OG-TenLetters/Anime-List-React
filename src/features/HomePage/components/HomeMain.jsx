@@ -10,6 +10,7 @@ const Main = ({
   setCurrentPage,
   showContactModal,
   isLoading,
+  searchResults
 }) => {
   const totalPages = 10;
   const handlePageChange = (page) => {
@@ -30,7 +31,7 @@ const Main = ({
                       ? Array.from({ length: 4 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
                         ))
-                      : (animes || []).length > 0
+                      : (animes || searchResults || []).length > 0
                       ?
                       // Array.from({ length: 4 }).map((_, index) => (
                       //   <AnimeCardSkeleton key={index} />
@@ -80,7 +81,7 @@ const Main = ({
                       ? Array.from({ length: 21 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
                         ))
-                      : (animes || []).length > 0
+                      : (animes || searchResults || []).length > 0
                       ? 
                       // Array.from({ length: 21 }).map((_, index) => (
                       //   <AnimeCardSkeleton key={index} />

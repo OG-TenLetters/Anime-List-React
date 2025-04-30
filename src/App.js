@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import IntroPage from "./pages/IntroPage";
 import HomePage from "./pages/HomePage";
 import InfoPage from "./pages/InfoPage";
@@ -9,14 +9,13 @@ function App() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [animes, setAnimes] = useState([]);
-  const [search, setSearch] = useState('');
-
   const [setManga] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
+  const [searchQuery, setSearchQuery] = useState('')
+  const isFirstRender = useRef(true)
   const fetchInterval = 400; // 1 second between requests
-  const searchInput = useParams()
   const toggleTheme = () => {
     if (isDark) {
       document.body.classList.remove("dark-theme");
@@ -79,25 +78,21 @@ function App() {
 
   const handleSearch = async () => {
     const { data } = await axios.get(
-      `https://api.jikan.moe/v4/anime?q=${searchInput}`
+      `https://api.jikan.moe/v4/anime?q=${searchQuery}`
     );
     const searchData = data.data;
-    setSearch(searchData);
+    setAnimes(searchData);
   };
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+    }
     const timer = setTimeout(() => {
       handleSearch();
     }, fetchInterval);
     return () => clearTimeout(timer);
-  }, [searchInput]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      renderAnimes();
-    }, fetchInterval);
-    return () => clearTimeout(timer); 
-  }, []);
+  }, [searchQuery]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -107,12 +102,15 @@ function App() {
   }, [setRanks]);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+    }
     const timer = setTimeout(() => {
       renderAnimes();
     }, fetchInterval);
     return () => clearTimeout(timer);
   }, [currentPage]);
-console.log(search)
+  
   return (
     <Router>
       <div className="App">
@@ -131,9 +129,7 @@ console.log(search)
             path="/home"
             element={
               <HomePage
-                setSearch={setSearch}
-                search={search}
-                searchInput={searchInput}
+                setSearchQuery={setSearchQuery}
                 isLoading={isLoading}
                 setAnimes={setAnimes}
                 setManga={setManga}
@@ -157,7 +153,6 @@ console.log(search)
                 animes={animes}
                 ranks={ranks}
                 renderMovies={renderMovies}
-                renderAnimeData
                 setAnimes={setAnimes}
                 setShowContactModal={setShowContactModal}
                 showContactModal={showContactModal}

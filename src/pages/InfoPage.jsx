@@ -22,7 +22,7 @@ const InfoPage = ({
   const [animeRec, setAnimeRec] = useState([]);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState([])
-  const fetchInterval = 1000; // 1 second between requests
+  const fetchInterval = 2000; // 1 second between requests
 
   const renderAnime = useCallback(async () => {
     const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
@@ -34,6 +34,7 @@ const InfoPage = ({
       `https://api.jikan.moe/v4/recommendations/anime`
     );
     const animeRecData = data.data;
+    console.log(animeRecData)
     setAnimeRec(animeRecData);
   }
   useEffect(() => {
@@ -41,17 +42,14 @@ const InfoPage = ({
     setIsLoading(true)
       renderAnime();
     setIsLoading(false)
-    // console.log("renderAnime - After Fetch: isLoading =", isLoading);
   }, [id, renderAnime]);
 
   useEffect(() => {
-    // console.log("renderAnimeRec - Before Fetch: isLoading =", isLoading);
     setIsLoading(true)
     const timer = setTimeout(() => {
       renderAnimeRec();
     }, fetchInterval);
     setIsLoading(false)
-    // console.log("renderAnimeRec - After Fetch: isLoading =", isLoading);
     return () => clearTimeout(timer);
   }, []);
 
@@ -75,6 +73,7 @@ const InfoPage = ({
         isLoading={isLoading}
         showContactModal={showContactModal}
         animeRec={animeRec}
+        id={id}
         anime={anime}
         animes={animes}
         ranks={ranks}

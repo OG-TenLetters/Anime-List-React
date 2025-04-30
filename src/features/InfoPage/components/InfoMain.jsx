@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import InfoTemplateSkeleton from "../../../components/InfoTemplateSkeleton";
 import InfoTemplate from "../../../components/InfoTemplate";
 
-const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading}) => {
+const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, id}) => {
   const navigate = useNavigate();
 
   return (
@@ -57,7 +57,7 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading}) => {
                       ? animeRec
                           .map((anime, index) => (
                             <AnimeCard
-                              animeId={anime?.entry[0]?.mal_id}
+                              id={anime?.entry[0]?.mal_id}
                               animeImg={
                                 anime?.entry[0]?.images?.webp?.image_url
                               }
@@ -87,7 +87,7 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading}) => {
                             <AnimeRankBar
                               key={index}
                               index={index}
-                              mal_id={rank?.mal_id}
+                              id={rank?.mal_id}
                               rankImg={rank?.images?.webp?.image_url}
                               rankTitle={rank?.title}
                               rankTitleEnglish={rank?.title_english}

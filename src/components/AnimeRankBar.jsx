@@ -1,13 +1,20 @@
 import React from "react";
-import AnimeCover from "../assets/Banner Piece 14.jpg";
 import { useNavigate } from "react-router-dom";
 
 const AnimeRankBar = ({ index, rankImg, rankTitle, id, rankTitleEnglish, rankTitleJapanese }) => {
   const navigate = useNavigate();
+  const navToTop = (path) => {
+    navigate(path)
+    window.scrollTo ({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
 
   return (
     <>
-      <div onClick={() => navigate(`/home/info/${id}`)} className="anime__rank-bar">
+      <div onClick={() => navToTop(`/home/info/${id}`)} className="anime__rank-bar">
         <div className="anime__rank">
           <figure className="rank__img--wrapper">
             <img src={rankImg} alt="" className="rank__img" />
