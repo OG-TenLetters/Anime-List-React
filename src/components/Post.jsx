@@ -13,7 +13,7 @@ const Post = () => {
       <div className="post-box__post--tag">#General</div>
       <div className="post-box__post--time">8 hours ago</div>
     </div>
-    <div className="post-box__post--stat-2 clickable">
+    <div className="post-box__post--stat-2 nope">
       <FontAwesomeIcon icon={faComment} />
       <div className="post-box__post--chat-tally">225</div>
     </div>

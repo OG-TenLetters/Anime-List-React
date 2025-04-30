@@ -14,7 +14,7 @@ const AnimeRankBar = ({ index, rankImg, rankTitle, id, rankTitleEnglish, rankTit
 
   return (
     <>
-      <div onClick={() => navToTop(`/home/info/${id}`)} className="anime__rank-bar">
+      <div onClick={() => navToTop(`/home/info/${id}`)} className="anime__rank-bar clickable">
         <div className="anime__rank">
           <figure className="rank__img--wrapper">
             <img src={rankImg} alt="" className="rank__img" />

@@ -137,7 +137,7 @@ const Navbar = ({
                 <FontAwesomeIcon icon={faRedditAlien} />
               </div>
             </div>
-            <div className="home__language--toggle">
+            <div className="home__language--toggle nope">
               <div className="home__languages">
                 <div className="home__language">EN</div>
                 <div className="home__language">JP</div>

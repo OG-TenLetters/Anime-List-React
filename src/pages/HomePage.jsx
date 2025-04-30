@@ -16,10 +16,9 @@ const HomePage = ({
   isLoading,
   renderAnimeData,
   setSearchQuery,
+  searchQuery
   
 }) => {
-  console.log(animes)
-
   return (
     <>
       <Banner page={"main"} />
@@ -37,6 +36,7 @@ const HomePage = ({
         showContactModal={showContactModal}
       />
       <Main
+      searchQuery={searchQuery}
         isLoading={isLoading}
         showContactModal={showContactModal}
         animes={animes}

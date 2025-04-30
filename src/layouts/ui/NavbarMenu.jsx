@@ -10,15 +10,14 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes, r
   }
   const closeMenuRenderMovies = async (path) => {
     toggleMenu()
-    navigate(path)
+    navigate("/home")
     const moviesData = await renderMovies;
     setAnimes(moviesData);
   }
   const closeMenuRenderAnimeMain = async (path) => {
     toggleMenu()
-    navigate(path)
-    const animesData = await renderAnimeData;
-    setAnimes(animesData);
+    navigate("/home")
+
   }
 
   return (
@@ -29,12 +28,12 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes, r
         </button>
         <div className="nav__menu--bg">
           <ul className="nav__menu--links">
-            <div onClick={() => closeMenuRenderAnimeMain("/home")} className="nav__menu--link-box">
+            <div onClick={() => closeMenuRenderAnimeMain()} className="nav__menu--link-box">
               <li className="nav__menu--link clickable link__hover-effect">
                 Home
               </li>
             </div>
-            <div onClick={() => closeMenuRenderMovies("/home")} className="nav__menu--link-box">
+            <div onClick={() => closeMenuRenderMovies()} className="nav__menu--link-box">
               <li className="nav__menu--link clickable link__hover-effect">
                 Movies
               </li>

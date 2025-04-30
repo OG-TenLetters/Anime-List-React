@@ -4,7 +4,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
                 
-const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal}) => {
+const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal, setAnimes, renderMovies, renderAnimes}) => {
+  const navigate = useNavigate()
+  const moviesNav = async () => {
+    const moviesData = await renderMovies;
+    setAnimes(moviesData);
+    navigate("/home")
+  }
+
 
 
   return (
@@ -14,7 +21,7 @@ const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal}) => {
         <li className="intro__nav--link link__hover-effect clickable">
           <Link to="/home">Home</Link>
         </li>
-        <li className="intro__nav--link link__hover-effect clickable">
+        <li onClick={moviesNav} className="intro__nav--link link__hover-effect clickable nope">
           Movies
         </li>
         <li className="intro__nav--link link__hover-effect nope">Manga</li>

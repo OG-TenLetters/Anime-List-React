@@ -31,7 +31,7 @@ const InfoTemplate = ({ showContactModal, anime }) => {
         </h2>
         <div className="template__glass"></div>
       </div>
-      <button className="add-to-list--btn">
+      <button className="add-to-list--btn nope">
         <FontAwesomeIcon icon={faPlus} />
         Add To List
       </button>

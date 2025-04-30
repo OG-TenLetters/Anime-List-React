@@ -29,6 +29,12 @@ const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
     event.preventDefault();
     performSearch();
   };
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
 
   return (
     <>
@@ -70,7 +76,7 @@ const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
                   ducimus? In maiores sint perferendis eveniet quos? Atque,
                   natus.
                 </div>
-                <Link to={"/home"}>
+                <Link onClick={toTop} to={"/home"}>
                   <button className="clickable intro__search-box--btn">
                     Start Here!
                     <div className="arrow--wrapper">

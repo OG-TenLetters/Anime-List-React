@@ -10,6 +10,7 @@ const Main = ({
   setCurrentPage,
   showContactModal,
   isLoading,
+  searchQuery,
 }) => {
   const totalPages = 10;
   const handlePageChange = (page) => {
@@ -25,7 +26,7 @@ const Main = ({
             <div className="anime-tab">
               <div className="anime__contents">
                 <div className="anime__first-4">
-                  <h1 className="anime__first-4--header">Anime</h1>
+                  <h1 className="anime__first-4--header">{searchQuery? `Showing results for "${searchQuery}"` : "Anime" }</h1>
                   <div className="anime__first-4--content">
                     {isLoading
                       ? Array.from({ length: 4 }).map((_, index) => (

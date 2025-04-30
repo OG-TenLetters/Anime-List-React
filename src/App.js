@@ -78,7 +78,7 @@ function App() {
 
   const handleSearch = async () => {
     const { data } = await axios.get(
-      `https://api.jikan.moe/v4/anime?q=${searchQuery}`
+      `https://api.jikan.moe/v4/anime?q=${searchQuery}&sfw`
     );
     const searchData = data.data;
     setAnimes(searchData);
@@ -119,6 +119,8 @@ function App() {
             path="/"
             element={
               <IntroPage
+              setAnimes={setAnimes}
+              renderMovies={renderMovies}
                 setSearchQuery={setSearchQuery}
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}
@@ -130,6 +132,7 @@ function App() {
             path="/home"
             element={
               <HomePage
+              searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 isLoading={isLoading}
                 setAnimes={setAnimes}
@@ -150,6 +153,7 @@ function App() {
             path="/home/info/:id"
             element={
               <InfoPage
+              renderAnimes={renderAnimes}
                 setSearchQuery={setSearchQuery}
                 isLoading={isLoading}
                 animes={animes}

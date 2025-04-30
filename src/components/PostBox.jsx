@@ -14,7 +14,7 @@ const PostBox = () => {
           <Post />
           <Post />
           <Post />
-          <button className="post-box__btn clickable">Read More...</button>
+          <button className="post-box__btn nope">Read More...</button>
         </div>
       </div>
     </>

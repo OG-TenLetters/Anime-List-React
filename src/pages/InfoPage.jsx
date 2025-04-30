@@ -35,7 +35,6 @@ const InfoPage = ({
       `https://api.jikan.moe/v4/recommendations/anime`
     );
     const animeRecData = data.data;
-    console.log(animeRecData)
     setAnimeRec(animeRecData);
   }
   useEffect(() => {

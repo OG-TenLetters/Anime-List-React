@@ -9,11 +9,17 @@ const IntroPage = ({
   showContactModal,
   toggleContactModal,
   setSearchQuery,
+  setAnimes,
+  renderMovies,
+  renderAnimes
 }) => {
   return (
     <>
       <Banner page={"intro"} />
       <IntroNavbar
+      renderAnimes={renderAnimes}
+      setAnimes={setAnimes}
+      renderMovies={renderMovies}
         toggleTheme={toggleTheme}
         showContactModal={showContactModal}
         toggleContactModal={toggleContactModal}

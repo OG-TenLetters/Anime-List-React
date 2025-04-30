@@ -14,7 +14,7 @@ const AnimeCard = ({ id, animeImg, animeTitle, animeTitleEnglish, animeTitleJapa
 
   return (
     <>
-      <div onClick={() => navToTop(`/home/info/${id}`)} className="anime-card">
+      <div onClick={() => navToTop(`/home/info/${id}`)} className="anime-card clickable">
         <figure className="anime-card__img--wrapper">
           <img src={animeImg} alt="" className="anime-card__img" />
           <div className="anime-card__cover"></div>
