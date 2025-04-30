@@ -101,6 +101,7 @@ const Navbar = ({
               <input
                 onKeyDown={handleKeyDown}
                 onChange={handleInputChange}
+                
                 type="text"
                 placeholder="Search..."
               />
@@ -161,11 +162,12 @@ const Navbar = ({
             <div className="home__searchbar2">
               <input
                 onKeyDown={handleKeyDown}
+                onChange={handleInputChange}
                 type="text"
                 placeholder="Search..."
               />
               <div className="home__search--btns2">
-                <div className="home__search--btn2">
+                <div onClick={handleSearchClick} className="home__search--btn2">
                   <FontAwesomeIcon icon={faSearch} />
                 </div>
                 <button className="search__filter--btns2">
