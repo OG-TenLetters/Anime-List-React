@@ -17,12 +17,13 @@ const InfoPage = ({
   renderMovies,
   setAnimes,
   renderAnimeData,
+  setSearchQuery,
 }) => {
   const [anime, setAnime] = useState({});
   const [animeRec, setAnimeRec] = useState([]);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState([])
-  const fetchInterval = 2000; // 1 second between requests
+  const fetchInterval = 1000;
 
   const renderAnime = useCallback(async () => {
     const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
@@ -38,7 +39,6 @@ const InfoPage = ({
     setAnimeRec(animeRecData);
   }
   useEffect(() => {
-    // console.log("renderAnime - Before Fetch: isLoading =", isLoading);
     setIsLoading(true)
       renderAnime();
     setIsLoading(false)
@@ -61,6 +61,7 @@ const InfoPage = ({
         renderManga={renderManga}
         renderMovies={renderMovies}
         setAnimes={setAnimes}
+        setSearchQuery={setSearchQuery}
         toggleContactModal={toggleContactModal}
         showContactModal={showContactModal}
         toggleTheme={toggleTheme}

@@ -34,6 +34,7 @@ const Navbar = ({
   const navigate = useNavigate();
   const [showNavMenu, setShowNavMenu] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   const toggleMenu = () => {
     const navMenu = document.querySelector(".nav__menu--backdrop");
     if (showNavMenu) {
@@ -45,13 +46,27 @@ const Navbar = ({
     }
   };
 
-  function handleSearchChange(event) {
-    if (event.key === 'Enter' || event.keyCode === 13) {
-      const searchInput = event.target.value
-      setSearchQuery(searchInput)
+  const performSearch = () => {
+    const searchTerm = inputValue.trim();
+    if (searchTerm) {
+      setSearchQuery(searchTerm);
+      navigate("/home");
     }
-  }
+  };
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" || event.keyCode === 13) {
+      event.preventDefault();
+      performSearch()
+    }
+  };
+  const handleSearchClick = (event) => {
+    event.preventDefault()
+    performSearch();
+  };
 
   return (
     <>
@@ -83,9 +98,17 @@ const Navbar = ({
               <SiteLogo />
             </div>
             <div className="home__searchbar">
-              <input onKeyUp={handleSearchChange} type="text" placeholder="Search..." />
+              <input
+                onKeyDown={handleKeyDown}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Search..."
+              />
               <div className="home__search--btns">
-                <div className="home__search--btn">
+                <div
+                  onClick={handleSearchClick}
+                  className="home__search--btn"
+                >
                   <FontAwesomeIcon icon={faSearch} />
                 </div>
                 <button className="search__filter--btns">
@@ -136,7 +159,11 @@ const Navbar = ({
           </div>
           {showSearchBar ? (
             <div className="home__searchbar2">
-              <input onKeyUp={handleSearchChange} type="text" placeholder="Search..." />
+              <input
+                onKeyDown={handleKeyDown}
+                type="text"
+                placeholder="Search..."
+              />
               <div className="home__search--btns2">
                 <div className="home__search--btn2">
                   <FontAwesomeIcon icon={faSearch} />

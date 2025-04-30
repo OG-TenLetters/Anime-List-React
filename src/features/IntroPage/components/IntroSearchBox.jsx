@@ -1,15 +1,43 @@
 import { faArrowRight, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { use, useState } from "react";
 import AnimeCollage from "../../../assets/Anime Collage.webp";
 import SiteLogo from "../../../components/SiteLogo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const IntroSearchBox = ({ showContactModal }) => {
+const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
+  const [inputValue, setInputValue] = useState('')
+  const navigate = useNavigate();
+  const performSearch = () => {
+    const searchTerm = inputValue.trim();
+    if (searchTerm) {
+      setSearchQuery(searchTerm);
+      navigate("/home");
+    }
+  };
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" || event.keyCode === 13) {
+      event.preventDefault();
+      performSearch();
+    }
+  };
+  const handleSearchClick = (event) => {
+    event.preventDefault();
+    performSearch();
+  };
+
   return (
     <>
       <section id="landing-page">
-        <div className={`intro__search-box--container ${showContactModal && "hide"}`}>
+        <div
+          className={`intro__search-box--container ${
+            showContactModal && "hide"
+          }`}
+        >
           <div className="intro__search-box--row">
             <div className="intro__search-box--box">
               <figure className="intro__search-box-image--wrapper">
@@ -24,8 +52,13 @@ const IntroSearchBox = ({ showContactModal }) => {
                 <SiteLogo />
 
                 <div className="intro__search-box--search-bar">
-                  <input type="text" placeholder="Search at your own risk..." />
-                  <button className="clickable intro__search-bar--btn">
+                  <input
+                    onKeyDown={handleKeyDown}
+                    onChange={handleInputChange}
+                    type="text"
+                    placeholder="Search at your own risk..."
+                  />
+                  <button onClick={handleSearchClick} className="clickable intro__search-bar--btn">
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </div>
@@ -37,7 +70,7 @@ const IntroSearchBox = ({ showContactModal }) => {
                   ducimus? In maiores sint perferendis eveniet quos? Atque,
                   natus.
                 </div>
-                <Link to={'/home'}>
+                <Link to={"/home"}>
                   <button className="clickable intro__search-box--btn">
                     Start Here!
                     <div className="arrow--wrapper">

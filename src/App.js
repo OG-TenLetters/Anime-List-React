@@ -13,8 +13,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
-  const [searchQuery, setSearchQuery] = useState('')
-  const isFirstRender = useRef(true)
+  const [searchQuery, setSearchQuery] = useState("");
+  const isFirstRender = useRef(true);
   const fetchInterval = 400; // 1 second between requests
   const toggleTheme = () => {
     if (isDark) {
@@ -86,7 +86,7 @@ function App() {
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
+      isFirstRender.current = false;
     }
     const timer = setTimeout(() => {
       handleSearch();
@@ -103,14 +103,14 @@ function App() {
 
   useEffect(() => {
     if (isFirstRender.current) {
-      isFirstRender.current = false
+      isFirstRender.current = false;
     }
     const timer = setTimeout(() => {
       renderAnimes();
     }, fetchInterval);
     return () => clearTimeout(timer);
   }, [currentPage]);
-  
+
   return (
     <Router>
       <div className="App">
@@ -119,6 +119,7 @@ function App() {
             path="/"
             element={
               <IntroPage
+                setSearchQuery={setSearchQuery}
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}
                 toggleContactModal={toggleContactModal}
@@ -149,6 +150,7 @@ function App() {
             path="/home/info/:id"
             element={
               <InfoPage
+                setSearchQuery={setSearchQuery}
                 isLoading={isLoading}
                 animes={animes}
                 ranks={ranks}

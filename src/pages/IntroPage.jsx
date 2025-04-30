@@ -8,6 +8,7 @@ const IntroPage = ({
   toggleTheme,
   showContactModal,
   toggleContactModal,
+  setSearchQuery,
 }) => {
   return (
     <>
@@ -21,7 +22,10 @@ const IntroPage = ({
         showContactModal={showContactModal}
         toggleContactModal={toggleContactModal}
       />
-      <IntroSearchBox showContactModal={showContactModal} />
+      <IntroSearchBox
+        showContactModal={showContactModal}
+        setSearchQuery={setSearchQuery}
+      />
       <IntroInfo showContactModal={showContactModal} />
       <Footer toggleContactModal={toggleContactModal} />
     </>

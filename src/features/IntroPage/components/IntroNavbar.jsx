@@ -1,10 +1,11 @@
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
                 
-const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal }) => {
+const IntroNavbar = ({ toggleTheme, showContactModal, toggleContactModal}) => {
+
 
   return (
     <section id="intro-nav" >

@@ -16,7 +16,10 @@ const HomePage = ({
   isLoading,
   renderAnimeData,
   setSearchQuery,
+  
 }) => {
+  console.log(animes)
+
   return (
     <>
       <Banner page={"main"} />
