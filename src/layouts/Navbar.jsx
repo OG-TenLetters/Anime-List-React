@@ -110,10 +110,10 @@ const Navbar = ({
                   onClick={handleSearchClick}
                   className="home__search--btn"
                 >
-                  <FontAwesomeIcon icon={faSearch} />
+                  <FontAwesomeIcon className="clickable" icon={faSearch} />
                 </div>
                 <button className="search__filter--btns">
-                  <div className="search__filter--word">Filter</div>
+                  <div className="search__filter--word nope">Filter</div>
                   <FontAwesomeIcon icon={faFilter} />
                 </button>
               </div>

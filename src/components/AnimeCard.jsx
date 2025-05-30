@@ -19,7 +19,7 @@ const AnimeCard = ({ id, animeImg, animeTitle, animeTitleEnglish, animeTitleJapa
           <img src={animeImg} alt="" className="anime-card__img" />
           <div className="anime-card__cover"></div>
           <div className="anime-card__desc">
-            {animeSynopsis}
+           {`${ animeSynopsis || "Description not available" }`}
           </div>
         </figure>
         <div className="anime-card__title--wrapper">

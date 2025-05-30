@@ -16,7 +16,8 @@ const InfoTemplateSkeleton = () => {
       </button>
       <figure className="template__img--wrapper--skeleton">
         <div className="template__g-rating">18+</div>
-        <img src={SkeletonImg} alt="" className="template__img--skeleton" />
+        <div className="template__img--skeleton"></div>
+       
       </figure>
       <div className="template__title--skeleton">
         <h2 className="template__title-text--skeleton">{" ███████████████"}</h2>

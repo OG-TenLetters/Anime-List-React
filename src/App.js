@@ -11,6 +11,7 @@ function App() {
   const [animes, setAnimes] = useState([]);
   const [setManga] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRanksLoading, setIsRanksLoading] = useState(false);
   const [ranks, setRanks] = useState([]);
   const [currentPage, setCurrentPage] = useState([1]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -48,6 +49,7 @@ function App() {
     setAnimes(animesData);
     setIsLoading(false);
   }
+
   async function renderAnimeData() {
     setIsLoading(true);
     const { data } = await axios.get(
@@ -58,13 +60,15 @@ function App() {
     setIsLoading(false);
     return animesData;
   }
+
   async function renderRanks() {
-    setIsLoading(true);
+    setIsRanksLoading(true);
     const { data } = await axios.get(`https://api.jikan.moe/v4/top/anime`);
     const ranksData = data.data;
     setRanks(ranksData);
-    setIsLoading(false);
+    setIsRanksLoading(false);
   }
+
   async function renderMovies() {
     setIsLoading(true);
     const { data } = await axios.get(
@@ -77,11 +81,13 @@ function App() {
   }
 
   const handleSearch = async () => {
+    setIsLoading(true);
     const { data } = await axios.get(
       `https://api.jikan.moe/v4/anime?q=${searchQuery}&sfw`
     );
     const searchData = data.data;
     setAnimes(searchData);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -119,8 +125,8 @@ function App() {
             path="/"
             element={
               <IntroPage
-              setAnimes={setAnimes}
-              renderMovies={renderMovies}
+                setAnimes={setAnimes}
+                renderMovies={renderMovies}
                 setSearchQuery={setSearchQuery}
                 showContactModal={showContactModal}
                 toggleTheme={toggleTheme}
@@ -132,12 +138,13 @@ function App() {
             path="/home"
             element={
               <HomePage
-              searchQuery={searchQuery}
+                searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 isLoading={isLoading}
                 setAnimes={setAnimes}
                 setManga={setManga}
                 renderAnimeData={renderAnimeData}
+                isRanksLoading={isRanksLoading}
                 renderMovies={renderMovies}
                 animes={animes}
                 ranks={ranks}
@@ -153,9 +160,9 @@ function App() {
             path="/home/info/:id"
             element={
               <InfoPage
-              renderAnimes={renderAnimes}
+                renderAnimes={renderAnimes}
                 setSearchQuery={setSearchQuery}
-                isLoading={isLoading}
+                isRanksLoading={isRanksLoading}
                 animes={animes}
                 ranks={ranks}
                 renderMovies={renderMovies}

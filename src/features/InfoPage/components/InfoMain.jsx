@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import InfoTemplateSkeleton from "../../../components/InfoTemplateSkeleton";
 import InfoTemplate from "../../../components/InfoTemplate";
 
-const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, id}) => {
+const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, isRanksLoading,}) => {
   const navigate = useNavigate();
 
   return (
@@ -22,22 +22,12 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, id}) =>
                   <InfoTemplateSkeleton />
                 ) : ( anime
                   ?
-                  // < InfoTemplateSkeleton />
-
-
                   <InfoTemplate
                     showContactModal={showContactModal}
                     anime={anime}
                     navigate={navigate}
                   />
                   : 
-                  
-                  // <InfoTemplate
-                  //   showContactModal={showContactModal}
-                  //   anime={anime}
-                  //   navigate={navigate}
-                  // />
-                  
                   < InfoTemplateSkeleton />
                 )}
                 <div
@@ -77,7 +67,7 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, id}) =>
                 <div className="anime__top-10">
                   <h1 className="anime__top-10--header">Top 10</h1>
                   <div className="anime__top-10--content">
-                    {isLoading
+                    {isRanksLoading
                       ? Array.from({ length: 10 }).map((_, index) => (
                           <AnimeRankSkeleton key={index} />
                         ))

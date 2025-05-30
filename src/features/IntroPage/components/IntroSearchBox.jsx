@@ -1,13 +1,14 @@
 import { faArrowRight, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import AnimeCollage from "../../../assets/Anime Collage.webp";
 import SiteLogo from "../../../components/SiteLogo";
 import { Link, useNavigate } from "react-router-dom";
 
 const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
+  const [imgLoading, setImgLoading] = useState(true);
   const performSearch = () => {
     const searchTerm = inputValue.trim();
     if (searchTerm) {
@@ -33,8 +34,10 @@ const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    })
-  }
+    });
+  };
+
+
 
   return (
     <>
@@ -47,11 +50,14 @@ const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
           <div className="intro__search-box--row">
             <div className="intro__search-box--box">
               <figure className="intro__search-box-image--wrapper">
-                <img
-                  className="intro__search-box--image"
-                  src={AnimeCollage}
-                  alt=""
-                />
+                  <div className="intro__search-box--image-skeleton"></div>
+                  <img
+                    className="intro__search-box--image"
+                    src={AnimeCollage}
+                    alt=""
+                    onLoad={() => setImgLoading(false)}
+                    style={{ display: imgLoading ? "none" : "block"}}
+                  />
               </figure>
               <div className="intro__search-box--cover"></div>
               <div className="intro__search-box--contents">
@@ -64,7 +70,10 @@ const IntroSearchBox = ({ showContactModal, setSearchQuery }) => {
                     type="text"
                     placeholder="Search at your own risk..."
                   />
-                  <button onClick={handleSearchClick} className="clickable intro__search-bar--btn">
+                  <button
+                    onClick={handleSearchClick}
+                    className="clickable intro__search-bar--btn"
+                  >
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </div>

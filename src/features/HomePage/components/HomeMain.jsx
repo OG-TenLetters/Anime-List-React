@@ -10,6 +10,7 @@ const Main = ({
   setCurrentPage,
   showContactModal,
   isLoading,
+  isRanksLoading,
   searchQuery,
 }) => {
   const totalPages = 5;
@@ -33,11 +34,7 @@ const Main = ({
                           <AnimeCardSkeleton key={index} />
                         ))
                       : (animes || []).length > 0
-                      ?
-                      // Array.from({ length: 4 }).map((_, index) => (
-                      //   <AnimeCardSkeleton key={index} />
-                      // ))
-                      
+                      ?           
                       animes
                           .map((anime, index) => (
                             <AnimeCard
@@ -55,23 +52,6 @@ const Main = ({
                       Array.from({ length: 4 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
                         ))
-                        
-                        // animes
-                        // .map((anime, index) => (
-                        //   <AnimeCard
-                        //     animeId={anime?.mal_id}
-                        //     animeImg={anime?.images.jpg.image_url}
-                        //     animeTitle={anime?.title}
-                        //     animeTitleEnglish={anime?.title_english}
-                        //     animeTitleJapanese={anime?.title_japan}
-                        //     animeSynopsis={anime?.synopsis}
-                        //     key={index}
-                        //   />
-                        // ))
-                        // .slice(0, 4)
-                        
-                        
-                        
                         }
                   </div>
                 </div>
@@ -84,9 +64,6 @@ const Main = ({
                         ))
                       : (animes || []).length > 0
                       ? 
-                      // Array.from({ length: 21 }).map((_, index) => (
-                      //   <AnimeCardSkeleton key={index} />
-                      // ))
                       animes
                           .map((anime, index) => (
                             <AnimeCard
@@ -104,19 +81,6 @@ const Main = ({
                        Array.from({ length: 21 }).map((_, index) => (
                           <AnimeCardSkeleton key={index} />
                         ))
-                        // animes
-                        // .map((anime, index) => (
-                        //   <AnimeCard
-                        //     animeId={anime?.mal_id}
-                        //     animeImg={anime?.images.jpg.image_url}
-                        //     animeTitle={anime?.title}
-                        //     animeTitleEnglish={anime?.title_english}
-                        //     animeTitleJapanese={anime?.title_japan}
-                        //     animeSynopsis={anime?.synopsis}
-                        //     key={index}
-                        //   />
-                        // ))
-                        // .slice(4, 25)
                         }
                   </div>
                 </div>
@@ -136,7 +100,7 @@ const Main = ({
                 <div className="anime__top-10">
                   <h1 className="anime__top-10--header">Top 10</h1>
                   <div className="anime__top-10--content">
-                    {isLoading
+                    {isRanksLoading
                       ? Array.from({ length: 10 }).map((_, index) => (
                           <AnimeRankSkeleton key={index} />
                         ))

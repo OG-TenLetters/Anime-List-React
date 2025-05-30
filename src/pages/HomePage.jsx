@@ -14,6 +14,7 @@ const HomePage = ({
   setAnimes,
   renderMovies,
   isLoading,
+  isRanksLoading,
   renderAnimeData,
   setSearchQuery,
   searchQuery
@@ -38,6 +39,7 @@ const HomePage = ({
       <Main
       searchQuery={searchQuery}
         isLoading={isLoading}
+        isRanksLoading={isRanksLoading}
         showContactModal={showContactModal}
         animes={animes}
         ranks={ranks}
