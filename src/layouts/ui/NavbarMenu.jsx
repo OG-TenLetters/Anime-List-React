@@ -24,7 +24,7 @@ const NavbarMenu = ({ toggleMenu, toggleContactModal, renderMovies, setAnimes, r
     <>
       <div className="nav__menu--backdrop">
         <button onClick={() => toggleMenu()} className="nav__menu--close">
-          <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon className="clickable" icon={faTimes} />
         </button>
         <div className="nav__menu--bg">
           <ul className="nav__menu--links">
