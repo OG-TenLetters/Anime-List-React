@@ -15,7 +15,6 @@ const InfoTemplateSkeleton = () => {
         <FontAwesomeIcon icon={faArrowLeft} /> Back
       </button>
       <figure className="template__img--wrapper--skeleton">
-        <div className="template__g-rating">18+</div>
         <div className="template__img--skeleton"></div>
        
       </figure>
@@ -56,6 +55,10 @@ const InfoTemplateSkeleton = () => {
         <div className="template__extra--skeleton">
           <p>
             <b>Japanese:</b>
+            {" ███████████████"}
+          </p>
+                    <p>
+            <b>English:</b> 
             {" ███████████████"}
           </p>
           <p>

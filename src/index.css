@@ -863,6 +863,7 @@ li {
   margin: 20px 8px;
 }
 
+
 .anime-card__skeleton--img {
   width: 105.26%;
 }
@@ -875,6 +876,11 @@ li {
   transform: scale(1.2);
   width: 100%;
   height: 100%;
+}
+
+.anime-card__img--censor,
+.template__img--censor {
+  filter: blur(8px);
 }
 
 .anime-card__skeleton--img-wrapper,
@@ -891,6 +897,12 @@ li {
 }
 .anime-card__img--wrapper:hover .anime-card__cover {
   opacity: 1;
+  z-index: 2;
+}
+
+.anime-card__img--wrapper:hover .template__g-rating {
+  transform: scale(70%) translate(-16px, -8px);
+  opacity: 50%;
 }
 
 .anime-card__skeleton--cover {
@@ -906,6 +918,7 @@ li {
 }
 
 .anime-card__skeleton--cover,
+.anime-card__censor-cover,
 .anime-card__cover {
   position: absolute;
   width: 100%;
@@ -919,6 +932,9 @@ li {
 .anime-card__cover {
   background-color: #1a0441b4;
   opacity: 0;
+}
+
+.anime-card__censor-cover {
 }
 
 .anime-card__img--wrapper:hover .anime-card__desc {
@@ -946,6 +962,7 @@ li {
   left: 50%;
   opacity: 0;
   transition: all 600ms ease;
+  z-index: 3;
 }
 .anime-card__skeleton--title,
 .anime-card__title {
@@ -1337,6 +1354,7 @@ li {
   position: absolute;
   top: 4px;
   left: 4px;
+  transition: all 300ms ease;
   z-index: 1;
 }
 

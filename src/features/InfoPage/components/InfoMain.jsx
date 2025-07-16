@@ -26,6 +26,7 @@ const InfoMain = ({ animeRec, anime, ranks, showContactModal, isLoading, isRanks
                     showContactModal={showContactModal}
                     anime={anime}
                     navigate={navigate}
+                    isLoading={isLoading}
                   />
                   : 
                   < InfoTemplateSkeleton />

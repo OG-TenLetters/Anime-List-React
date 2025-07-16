@@ -4,8 +4,9 @@ import { faArrowLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
 import ShareBox from "./ShareBox";
 import { useNavigate } from "react-router-dom";
 
-const InfoTemplate = ({ showContactModal, anime }) => {
+const InfoTemplate = ({ showContactModal, anime,}) => {
   const navigate = useNavigate();
+  console.log(anime)
   return (
     
     <div className={`template__content ${showContactModal && "hide"} `}>
@@ -18,11 +19,14 @@ const InfoTemplate = ({ showContactModal, anime }) => {
         <FontAwesomeIcon icon={faArrowLeft} /> Back
       </button>
       <figure className="template__img--wrapper">
-        <div className="template__g-rating">18+</div>
+        {
+          anime?.genres?.some(genre => genre.name === "Hentai" || genre.name === "Ecchi" || genre.name === "Erotica") &&
+          <div className="template__g-rating">18+</div>
+        }
         <img
           src={anime?.images?.webp?.large_image_url}
           alt=""
-          className="template__img"
+          className={`template__img ${anime?.genres?.some(genre => genre.name === "Hentai") && "template__img--censor"}`}
         />
       </figure>
       <div className="template__title">
@@ -47,6 +51,9 @@ const InfoTemplate = ({ showContactModal, anime }) => {
         <div className="template__extra">
           <p>
             <b>Japanese:</b> {anime?.title_japanese || "Currently Not Found"}
+          </p>
+          <p>
+            <b>English:</b> {anime?.title_english || "Currently Not Found"}
           </p>
           <p>
             <b>Synonyms:</b>{" "}

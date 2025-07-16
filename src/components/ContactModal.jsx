@@ -63,7 +63,7 @@ const ContactModal = ({ showContactModal, toggleContactModal }) => {
             excited to <b className="primary"> incorporate </b>
             my skills to website development.
           </p>
-          <div className="contact-modal__languages">
+          {/* <div className="contact-modal__languages">
             <figure className="contact-modal__language">
               <img
                 className="contact-modal__language--img"
@@ -128,8 +128,8 @@ const ContactModal = ({ showContactModal, toggleContactModal }) => {
               />
               <span className="contact-modal__language--name">SQL</span>
             </figure>
+        </div> */}
           </div>
-        </div>
         <div className="contact-modal__half contact-modal__contact">
           <div className="contact-modal__title contact-modal__title--contact">
             <h3 className="contact-modal__title contact-modal__title--contact">

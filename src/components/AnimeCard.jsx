@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const AnimeCard = ({ id, animeImg, animeTitle, animeTitleEnglish, animeTitleJapanese, animeSynopsis }) => {
+const AnimeCard = ({ id, animeImg, animeTitle, animeTitleEnglish, animeTitleJapanese, animeSynopsis, animeAdultRated, animeCensor }) => {
   const navigate = useNavigate();
 
   const navToTop = (path) => {
@@ -12,11 +12,18 @@ const AnimeCard = ({ id, animeImg, animeTitle, animeTitleEnglish, animeTitleJapa
     })
   }
 
+
   return (
     <>
       <div onClick={() => navToTop(`/home/info/${id}`)} className="anime-card clickable">
         <figure className="anime-card__img--wrapper">
-          <img src={animeImg} alt="" className="anime-card__img" />
+
+        { animeAdultRated && 
+          <div className="template__g-rating">18+</div>
+        }
+
+          <img src={animeImg} alt="" className={`anime-card__img ${animeCensor && "anime-card__img--censor"}`} />
+
           <div className="anime-card__cover"></div>
           <div className="anime-card__desc">
            {`${ animeSynopsis || "Description not available" }`}

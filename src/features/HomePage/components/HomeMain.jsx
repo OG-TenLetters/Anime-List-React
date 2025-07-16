@@ -18,7 +18,7 @@ const Main = ({
     setCurrentPage(page);
   };
 
-  
+
   return (
     <>
       <section id="home-main">
@@ -45,6 +45,8 @@ const Main = ({
                               animeTitleJapanese={anime?.title_japan}
                               animeSynopsis={anime?.synopsis}
                               key={index}
+                              animeAdultRated= {anime?.genres?.some(genre => genre.name === "Hentai" || genre.name === "Ecchi" || genre.name === "Erotica")}
+                              animeCensor = {anime?.genres?.some(genre => genre.name === "Hentai")}
                             />
                           ))
                           .slice(0, 4)
@@ -74,6 +76,8 @@ const Main = ({
                               animeTitleJapanese={anime?.title_japan}
                               animeSynopsis={anime?.synopsis}
                               key={index}
+                              animeAdultRated= {anime?.genres?.some(genre => genre.name === "Hentai" || genre.name === "Ecchi" || genre.name === "Erotica")}
+                              animeCensor = {anime?.genres?.some(genre => genre.name === "Hentai")}
                             />
                           ))
                           .slice(4, 25)
